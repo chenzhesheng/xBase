@@ -10,7 +10,7 @@ import retrofit2.http.Query;
 /**
  * (￣▽￣)"
  *
- * @version V1.0 :
+ * @version V1.0 : 接口层
  * @author: Administrator
  * @date: 2017-10-18 10:04
  */

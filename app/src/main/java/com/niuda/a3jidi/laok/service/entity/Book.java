@@ -302,6 +302,36 @@ public class Book {
             this.translator = translator;
         }
 
+        @Override
+        public String toString() {
+            return "BooksBean{" +
+                    "rating=" + rating +
+                    ", subtitle='" + subtitle + '\'' +
+                    ", pubdate='" + pubdate + '\'' +
+                    ", origin_title='" + origin_title + '\'' +
+                    ", image='" + image + '\'' +
+                    ", binding='" + binding + '\'' +
+                    ", catalog='" + catalog + '\'' +
+                    ", pages='" + pages + '\'' +
+                    ", images=" + images +
+                    ", alt='" + alt + '\'' +
+                    ", id='" + id + '\'' +
+                    ", publisher='" + publisher + '\'' +
+                    ", isbn10='" + isbn10 + '\'' +
+                    ", isbn13='" + isbn13 + '\'' +
+                    ", title='" + title + '\'' +
+                    ", url='" + url + '\'' +
+                    ", alt_title='" + alt_title + '\'' +
+                    ", author_intro='" + author_intro + '\'' +
+                    ", summary='" + summary + '\'' +
+                    ", series=" + series +
+                    ", price='" + price + '\'' +
+                    ", author=" + author +
+                    ", tags=" + tags +
+                    ", translator=" + translator +
+                    '}';
+        }
+
         public static class RatingBean {
             /**
              * max : 10
@@ -346,6 +376,16 @@ public class Book {
             public void setMin(int min) {
                 this.min = min;
             }
+
+            @Override
+            public String toString() {
+                return "RatingBean{" +
+                        "max=" + max +
+                        ", numRaters=" + numRaters +
+                        ", average='" + average + '\'' +
+                        ", min=" + min +
+                        '}';
+            }
         }
 
         public static class ImagesBean {
@@ -382,6 +422,15 @@ public class Book {
             public void setMedium(String medium) {
                 this.medium = medium;
             }
+
+            @Override
+            public String toString() {
+                return "ImagesBean{" +
+                        "small='" + small + '\'' +
+                        ", large='" + large + '\'' +
+                        ", medium='" + medium + '\'' +
+                        '}';
+            }
         }
 
         public static class SeriesBean {
@@ -407,6 +456,14 @@ public class Book {
 
             public void setTitle(String title) {
                 this.title = title;
+            }
+
+            @Override
+            public String toString() {
+                return "SeriesBean{" +
+                        "id='" + id + '\'' +
+                        ", title='" + title + '\'' +
+                        '}';
             }
         }
 
@@ -444,6 +501,25 @@ public class Book {
             public void setTitle(String title) {
                 this.title = title;
             }
+
+            @Override
+            public String toString() {
+                return "TagsBean{" +
+                        "count=" + count +
+                        ", name='" + name + '\'' +
+                        ", title='" + title + '\'' +
+                        '}';
+            }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "count=" + count +
+                ", start=" + start +
+                ", total=" + total +
+                ", books=" + books +
+                '}';
     }
 }
