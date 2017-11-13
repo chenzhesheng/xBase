@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.laok.ui.activity;
+package com.niuda.a3jidi.laok.booklook.view.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,9 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.niuda.a3jidi.laok.R;
-import com.niuda.a3jidi.laok.service.entity.Book;
-import com.niuda.a3jidi.laok.service.presenter.BookPresenter;
-import com.niuda.a3jidi.laok.service.view.BookView;
+import com.niuda.a3jidi.laok.booklook.model.entity.Book;
+import com.niuda.a3jidi.laok.booklook.presenter.BookPresenter;
+import com.niuda.a3jidi.laok.booklook.model.entity.BookView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextView;

@@ -1,6 +1,6 @@
-package com.niuda.a3jidi.laok.service.view;
+package com.niuda.a3jidi.laok.booklook.model.entity;
 
-import com.niuda.a3jidi.laok.service.entity.Book;
+import com.niuda.a3jidi.laok.base.view.View;
 
 /**
  * (￣▽￣)"

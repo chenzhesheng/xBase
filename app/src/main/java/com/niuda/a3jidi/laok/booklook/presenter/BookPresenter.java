@@ -1,12 +1,13 @@
-package com.niuda.a3jidi.laok.service.presenter;
+package com.niuda.a3jidi.laok.booklook.presenter;
 
 import android.content.Context;
 import android.content.Intent;
 
-import com.niuda.a3jidi.laok.service.entity.Book;
-import com.niuda.a3jidi.laok.service.manager.DataManager;
-import com.niuda.a3jidi.laok.service.view.BookView;
-import com.niuda.a3jidi.laok.service.view.View;
+import com.niuda.a3jidi.laok.base.http.BasePresenter;
+import com.niuda.a3jidi.laok.booklook.model.entity.Book;
+import com.niuda.a3jidi.laok.booklook.model.entity.BookView;
+import com.niuda.a3jidi.laok.booklook.model.manager.DataManager;
+import com.niuda.a3jidi.laok.base.view.View;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -22,7 +23,7 @@ import io.reactivex.schedulers.Schedulers;
  * @date: 2017-11-12 15:45
  */
 
-public class BookPresenter implements Presenter {
+public class BookPresenter implements BasePresenter {
     private Context mContext;
     private DataManager mManager;
     private BookView mBookView;
@@ -73,8 +74,8 @@ public class BookPresenter implements Presenter {
 
     public void getSearchBook(String name,String tag,int start,int count){
         mManager.getSearchBook(name, tag, start, count)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())       //IO线程进行请求
+                .observeOn(AndroidSchedulers.mainThread())  //主线程回调
                 .subscribe(new Observer<Book>() {
                     @Override
                     public void onSubscribe(Disposable d) {

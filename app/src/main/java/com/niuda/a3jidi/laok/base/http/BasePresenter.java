@@ -1,8 +1,8 @@
-package com.niuda.a3jidi.laok.service.presenter;
+package com.niuda.a3jidi.laok.base.http;
 
 import android.content.Intent;
 
-import com.niuda.a3jidi.laok.service.view.View;
+import com.niuda.a3jidi.laok.base.view.View;
 
 /**
  * (￣▽￣)"
@@ -12,7 +12,7 @@ import com.niuda.a3jidi.laok.service.view.View;
  * @date: 2017-11-12 15:42
  */
 
-public interface Presenter {
+public interface BasePresenter {
     void onCreate();
 
     void onStart();

@@ -1,10 +1,15 @@
-package com.niuda.a3jidi.laok.service;
+package com.niuda.a3jidi.laok.base.http;
 
 import android.content.Context;
 
 import com.google.gson.GsonBuilder;
 
+import java.io.IOException;
+
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -22,9 +27,20 @@ public class RetrofitHelper {
 
     private Context context;
     private static  RetrofitHelper sHelper = null;
-    OkHttpClient client = new OkHttpClient();
-    GsonConverterFactory factory = GsonConverterFactory.create(new GsonBuilder().create());
+    private GsonConverterFactory factory = GsonConverterFactory.create(new GsonBuilder().create());
     private Retrofit mRetrofit = null;
+
+    // okhttp初始化
+    private OkHttpClient client = new OkHttpClient.Builder()
+            .addInterceptor(new Interceptor() {// 添加通用的Header
+                @Override
+                public Response intercept(Chain chain) throws IOException {
+                    Request.Builder builder = chain.request().newBuilder();
+//                    builder.addHeader("token", "123");
+                    return chain.proceed(builder.build());
+                }
+            }).build();
+
 
 
     public static RetrofitHelper getInstance(Context context){
@@ -72,5 +88,4 @@ public class RetrofitHelper {
     public RetrofitService getService(){
         return mRetrofit.create(RetrofitService.class);
     }
-
 }
