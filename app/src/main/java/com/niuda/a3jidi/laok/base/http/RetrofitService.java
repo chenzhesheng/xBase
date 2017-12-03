@@ -1,7 +1,7 @@
 package com.niuda.a3jidi.laok.base.http;
 
 
-import com.niuda.a3jidi.laok.booklook.model.entity.Book;
+import com.niuda.a3jidi.laok.booklook.model.Book;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

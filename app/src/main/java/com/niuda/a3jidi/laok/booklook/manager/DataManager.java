@@ -1,10 +1,10 @@
-package com.niuda.a3jidi.laok.booklook.model.manager;
+package com.niuda.a3jidi.laok.booklook.manager;
 
 import android.content.Context;
 
 import com.niuda.a3jidi.laok.base.http.RetrofitHelper;
 import com.niuda.a3jidi.laok.base.http.RetrofitService;
-import com.niuda.a3jidi.laok.booklook.model.entity.Book;
+import com.niuda.a3jidi.laok.booklook.model.Book;
 
 import io.reactivex.Observable;
 

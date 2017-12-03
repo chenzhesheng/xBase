@@ -55,6 +55,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initSystemBarTint();
+        setContentView(initLayout());
     }
 
     @Override
@@ -94,6 +95,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected boolean translucentStatusBar() {
         return false;
     }
+
+    protected abstract int initLayout();
 
     /** 设置状态栏颜色 */
     protected void initSystemBarTint() {

@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.niuda.a3jidi.laok.base.http.BasePresenter;
-import com.niuda.a3jidi.laok.booklook.model.entity.Book;
-import com.niuda.a3jidi.laok.booklook.model.entity.BookView;
-import com.niuda.a3jidi.laok.booklook.model.manager.DataManager;
+import com.niuda.a3jidi.laok.booklook.model.Book;
+import com.niuda.a3jidi.laok.booklook.model.BookView;
+import com.niuda.a3jidi.laok.booklook.manager.DataManager;
 import com.niuda.a3jidi.laok.base.view.View;
 
 import io.reactivex.Observer;

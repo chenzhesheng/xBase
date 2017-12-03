@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.laok.booklook.model.entity;
+package com.niuda.a3jidi.laok.booklook.model;
 
 import java.util.List;
 

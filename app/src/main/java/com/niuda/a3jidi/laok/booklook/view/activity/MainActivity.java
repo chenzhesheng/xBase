@@ -8,9 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.niuda.a3jidi.laok.R;
-import com.niuda.a3jidi.laok.booklook.model.entity.Book;
+import com.niuda.a3jidi.laok.booklook.model.Book;
 import com.niuda.a3jidi.laok.booklook.presenter.BookPresenter;
-import com.niuda.a3jidi.laok.booklook.model.entity.BookView;
+import com.niuda.a3jidi.laok.booklook.model.BookView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextView;

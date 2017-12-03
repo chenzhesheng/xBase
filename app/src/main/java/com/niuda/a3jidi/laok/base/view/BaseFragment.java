@@ -1,11 +1,15 @@
 package com.niuda.a3jidi.laok.base.view;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import butterknife.ButterKnife;
 
 /**
  * 若把初始化内容放到initData实现,就是采用Lazy方式加载的Fragment
@@ -31,12 +35,17 @@ public abstract class BaseFragment extends Fragment {
     private boolean isPrepared;                 //标志位，View已经初始化完成。
     private boolean isFirstLoad = true;         //是否第一次加载
     protected LayoutInflater inflater;
+    protected Context context;
+    protected  View view;
+    protected Bundle savedInstanceState;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.inflater = inflater;
         isFirstLoad = true;
-        View view = initView(inflater, container, savedInstanceState);
+        view = inflater.inflate(initLayout(), container, false);
+        ButterKnife.inject(this, view);
+        this.savedInstanceState = savedInstanceState;
         isPrepared = true;
         lazyLoad();
         return view;
@@ -71,6 +80,21 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
+
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        viewStateRetored();
+    }
+
+
     protected void onVisible() {
         lazyLoad();
     }
@@ -83,12 +107,18 @@ public abstract class BaseFragment extends Fragment {
             return;
         }
         isFirstLoad = false;
-        initData();
+        savedInstanceState(savedInstanceState);
+        initData(view);
     }
 
-    protected abstract View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
+    protected abstract int initLayout();
 
-    protected abstract void initData();
+    protected abstract void savedInstanceState(Bundle savedInstanceState);
+
+    protected abstract void viewStateRetored();
+
+    protected abstract void initData(View view);
+
 
     public String getTitle() {
         return TextUtils.isEmpty(fragmentTitle) ? "" : fragmentTitle;
