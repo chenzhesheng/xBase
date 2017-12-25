@@ -1,91 +1,58 @@
-apply plugin: "com.android.application"
-
-def VERSION_NAME = "1.0"
-def apkName;
+apply plugin: 'com.android.library'
 
 android {
-
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
+
     defaultConfig {
-        applicationId "com.niuda.a3jidi.laok"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName VERSION_NAME
-        multiDexEnabled = true//突破65535限制
+        versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                includeCompileClasspath = true
-            }
-        }
     }
 
-    // 定义生成的apk的名称
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            // 定义release版本生成的apk的名字 VERSION_NAME
-            apkName = "laok" + VERSION_NAME + "_release.apk";
-        }
-
-        debug{
-            // 定义debug版本生成的apk的名字
-            apkName = "laok_" + VERSION_NAME + "_debug.apk";
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
-}
-
-// 修改apk build的名字
-android.applicationVariants.all { variant ->
-    variant.outputs.all {
-        if (outputFileName.endsWith(".apk")) {
-            //这里使用之前定义apk文件名称
-            outputFileName = apkName
-        }
-    }
-}
-
-tasks.whenTaskAdded { task ->
-    if (task.name.equals("lint")) {
-        task.enabled = false
-    }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:2.2.2", {
-        exclude group: "com.android.support", module: "support-annotations"
-    })
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
     // Android support
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
     implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+
     // recyclerview
     implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+
     //retrofit + rxjava
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit2Version"
     implementation "com.squareup.retrofit2:retrofit-adapters:$rootProject.retrofitAdaptersVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.converterGsonVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.adapterRxjava2Version"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+
     // butterknife
     implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+
     // imagepicker
     implementation "com.lzy.widget:imagepicker:$rootProject.imagepickerVersion"
+
     // glide
     implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-    compile project(path: ':lib_base')
-    implementation project(':lib_base')
 }

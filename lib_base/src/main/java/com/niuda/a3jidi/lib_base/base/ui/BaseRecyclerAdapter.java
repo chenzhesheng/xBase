@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.laok.base.view;
+package com.niuda.a3jidi.lib_base.base.ui;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

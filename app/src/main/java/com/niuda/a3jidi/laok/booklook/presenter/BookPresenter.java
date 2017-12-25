@@ -3,11 +3,11 @@ package com.niuda.a3jidi.laok.booklook.presenter;
 import android.content.Context;
 import android.content.Intent;
 
-import com.niuda.a3jidi.laok.base.http.BasePresenter;
+import com.niuda.a3jidi.laok.booklook.manager.DataManager;
 import com.niuda.a3jidi.laok.booklook.model.Book;
 import com.niuda.a3jidi.laok.booklook.model.BookView;
-import com.niuda.a3jidi.laok.booklook.manager.DataManager;
-import com.niuda.a3jidi.laok.base.view.View;
+import com.niuda.a3jidi.lib_base.base.http.BasePresenter;
+import com.niuda.a3jidi.lib_base.base.ui.BaseView;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -62,8 +62,8 @@ public class BookPresenter implements BasePresenter {
     }
 
     @Override
-    public void attachView(View view) {
-        mBookView = (BookView) view;
+    public void attachView(BaseView baseView) {
+        mBookView = (BookView) baseView;
     }
 
     @Override

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.niuda.a3jidi.laok.base.view;
+package com.niuda.a3jidi.lib_base.base.ui;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
@@ -33,7 +33,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.lzy.imagepicker.view.SystemBarTintManager;
-import com.niuda.a3jidi.laok.R;
+import com.niuda.a3jidi.lib_base.R;
 
 import butterknife.ButterKnife;
 
@@ -61,19 +61,19 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
     }
 
     @Override
     public void setContentView(View view) {
         super.setContentView(view);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
     }
 
     @Override
     public void setContentView(View view, ViewGroup.LayoutParams params) {
         super.setContentView(view, params);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
     }
 
     @Override

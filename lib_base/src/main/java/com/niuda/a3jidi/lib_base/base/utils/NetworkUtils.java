@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.laok.base.utils;
+package com.niuda.a3jidi.lib_base.base.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

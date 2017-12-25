@@ -1,8 +1,9 @@
-package com.niuda.a3jidi.laok.base.http;
+package com.niuda.a3jidi.lib_base.base.http;
 
 import android.content.Intent;
 
-import com.niuda.a3jidi.laok.base.view.View;
+import com.niuda.a3jidi.lib_base.base.ui.BaseView;
+
 
 /**
  * (￣▽￣)"
@@ -23,7 +24,7 @@ public interface BasePresenter {
 
     void onStop();
 
-    void attachView(View view); // 用于绑定View
+    void attachView(BaseView baseView); // 用于绑定View
 
     void attachIncomingIntent(Intent intent);
 }

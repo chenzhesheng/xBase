@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.laok.base.view;
+package com.niuda.a3jidi.lib_base.base.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,6 +20,7 @@ import butterknife.ButterKnife;
  * -注2: 如果是通过FragmentTransaction的show和hide的方法来控制显示，调用的是onHiddenChanged.
  * -注3: 针对初始就show的Fragment 为了触发onHiddenChanged事件 达到lazy效果 需要先hide再show
  */
+
 /**
  * (￣▽￣)"
  *
@@ -44,7 +45,7 @@ public abstract class BaseFragment extends Fragment {
         this.inflater = inflater;
         isFirstLoad = true;
         view = inflater.inflate(initLayout(), container, false);
-        ButterKnife.inject(this, view);
+        ButterKnife.bind(this, view);
         this.savedInstanceState = savedInstanceState;
         isPrepared = true;
         lazyLoad();

@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.laok.base.view;
+package com.niuda.a3jidi.lib_base.base.ui;
 
 /**
  * (￣▽￣)"
@@ -8,5 +8,5 @@ package com.niuda.a3jidi.laok.base.view;
  * @date: 2017-11-12 15:39
  */
 
-public interface View {
+public interface BaseView {
 }

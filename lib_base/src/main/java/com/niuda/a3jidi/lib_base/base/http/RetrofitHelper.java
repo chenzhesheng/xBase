@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.laok.base.http;
+package com.niuda.a3jidi.lib_base.base.http;
 
 import android.content.Context;
 
@@ -23,8 +23,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitHelper {
-    private final static String Url = "https://api.douban.com/v2/";
-
     private Context context;
     private static  RetrofitHelper sHelper = null;
     private GsonConverterFactory factory = GsonConverterFactory.create(new GsonBuilder().create());
@@ -72,12 +70,14 @@ public class RetrofitHelper {
      *  Retrofit的创建
      */
     private void resetApp() {
-        mRetrofit = new Retrofit.Builder()
-                .baseUrl(Url)
-                .client(client)
-                .addConverterFactory(factory)
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
+        if(mRetrofit == null) {
+            mRetrofit = new Retrofit.Builder()
+                    .baseUrl(RetrofitService.Url)
+                    .client(client)
+                    .addConverterFactory(factory)
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .build();
+        }
     }
 
 

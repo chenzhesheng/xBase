@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.laok.base.utils;
+package com.niuda.a3jidi.lib_base.base.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
