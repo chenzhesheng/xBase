@@ -16,7 +16,7 @@ import io.reactivex.Observable;
  * @date: 2017-11-11 14:07
  */
 
-public class DataManager {
+public class DataManager<T> {
     private RetrofitService mRetrofitService;
 
     /**

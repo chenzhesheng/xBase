@@ -1,13 +1,12 @@
 package com.niuda.a3jidi.laok.booklook.presenter;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.niuda.a3jidi.laok.booklook.manager.DataManager;
 import com.niuda.a3jidi.laok.booklook.model.Book;
-import com.niuda.a3jidi.laok.booklook.model.BookView;
-import com.niuda.a3jidi.lib_base.base.http.BasePresenter;
-import com.niuda.a3jidi.lib_base.base.ui.BaseView;
+import com.niuda.a3jidi.laok.booklook.model.IBookView;
+import com.niuda.a3jidi.lib_base.base.base.IBasePresenter;
+import com.niuda.a3jidi.lib_base.base.base.IBaseView;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -23,10 +22,10 @@ import io.reactivex.schedulers.Schedulers;
  * @date: 2017-11-12 15:45
  */
 
-public class BookPresenter implements BasePresenter {
+public class BookPresenter implements IBasePresenter {
     private Context mContext;
     private DataManager mManager;
-    private BookView mBookView;
+    private IBookView mBookView;
     private Book mBook;
 //    private CompositeSubscription mCompositeSubscription;
 
@@ -40,21 +39,6 @@ public class BookPresenter implements BasePresenter {
     }
 
     @Override
-    public void onStart() {
-
-    }
-
-    @Override
-    public void onResume() {
-
-    }
-
-    @Override
-    public void onPause() {
-
-    }
-
-    @Override
     public void onStop() {
 //        if (mCompositeSubscription.hasSubscriptions()){
 //            mCompositeSubscription.unsubscribe();
@@ -62,15 +46,9 @@ public class BookPresenter implements BasePresenter {
     }
 
     @Override
-    public void attachView(BaseView baseView) {
-        mBookView = (BookView) baseView;
+    public void attachView(IBaseView baseView) {
+        mBookView = (IBookView) baseView;
     }
-
-    @Override
-    public void attachIncomingIntent(Intent intent) {
-
-    }
-
 
     public void getSearchBook(String name,String tag,int start,int count){
         mManager.getSearchBook(name, tag, start, count)
@@ -102,4 +80,13 @@ public class BookPresenter implements BasePresenter {
                 });
     }
 
+    @Override
+    public void subscribe() {
+
+    }
+
+    @Override
+    public void unSubscribe() {
+
+    }
 }

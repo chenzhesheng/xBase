@@ -1,7 +1,6 @@
 package com.niuda.a3jidi.laok.booklook.view.activity;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -9,38 +8,44 @@ import android.widget.Toast;
 
 import com.niuda.a3jidi.laok.R;
 import com.niuda.a3jidi.laok.booklook.model.Book;
+import com.niuda.a3jidi.laok.booklook.model.IBookView;
 import com.niuda.a3jidi.laok.booklook.presenter.BookPresenter;
-import com.niuda.a3jidi.laok.booklook.model.BookView;
+import com.niuda.a3jidi.lib_base.base.base.BaseActivity;
 
-public class MainActivity extends AppCompatActivity {
-    private TextView mTextView;
-    private Button mButton;
+import butterknife.BindView;
+
+public class MainActivity extends BaseActivity{
+    @BindView(R.id.textview)
+    TextView mTextview;
+    @BindView(R.id.button)
+    Button mButton;
     private BookPresenter mBookPresenter = new BookPresenter(this);
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int initLayout() {
+        return R.layout.activity_main;
+    }
 
-        mTextView = (TextView) findViewById(R.id.textview);
-        mButton = (Button) findViewById(R.id.button);
-
+    @Override
+    protected void initView() {
+        mBookPresenter.onCreate();
+        mBookPresenter.attachView(mBookView);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mBookPresenter.getSearchBook("孙子兵法",null,1,10);
+                Log.i("TAG","sendRequest");
+                mBookPresenter.getSearchBook("孙子兵法", null, 1, 10);
             }
         });
-
-        mBookPresenter.onCreate();
-        mBookPresenter.attachView(mBookView);
     }
 
-    private BookView mBookView = new BookView() {
+
+    private IBookView mBookView = new IBookView() {
         @Override
         public void onSuccess(Book book) {
             mButton.setVisibility(View.GONE);
-            mTextView.setText(book.toString());
+            mTextview.setText(book.toString());
         }
 
         @Override
@@ -49,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mBookPresenter.onStop();
     }
+
 }

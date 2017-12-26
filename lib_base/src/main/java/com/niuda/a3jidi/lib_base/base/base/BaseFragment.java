@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.lib_base.base.ui;
+package com.niuda.a3jidi.lib_base.base.base;
 
 import android.content.Context;
 import android.os.Bundle;
