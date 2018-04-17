@@ -1,13 +1,25 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply from: 'rx.gradle'
+apply plugin: 'realm-android'
+
+
+kapt {
+    arguments {
+        arg("moduleName", project.getName())
+    }
+}
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion versions.targetSdk
+    buildToolsVersion versions.buildTools
 
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
         versionCode 1
         versionName "1.0"
 
@@ -25,49 +37,37 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     // Android support
-    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
-
-    // recyclerview
-    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
-
-    //rx
-    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
-    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
-    implementation "com.trello.rxlifecycle2:rxlifecycle:2.2.1"
-    implementation "com.trello.rxlifecycle2:rxlifecycle-android:2.1.0"
-    implementation "com.trello.rxlifecycle2:rxlifecycle-components:2.1.0"
+    api "com.android.support:appcompat-v7:${versions.supportLibrary}"
+    api "com.android.support:cardview-v7:${versions.supportLibrary}"
+    api "com.android.support:design:${versions.supportLibrary}"
+    api "com.android.support:recyclerview-v7:${versions.supportLibrary}"
+    api "com.android.support:support-v4:${versions.supportLibrary}"
+    api "com.android.support:design:${versions.supportLibrary}"
+    api "com.android.support:recyclerview-v7:${versions.supportLibrary}"
 
     //network
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofit2Version"
-    implementation "com.squareup.retrofit2:retrofit-adapters:$rootProject.retrofitAdaptersVersion"
-    implementation "com.squareup.retrofit2:converter-gson:$rootProject.converterGsonVersion"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.adapterRxjava2Version"
-    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+    api "com.squareup.retrofit2:retrofit:${versions.retrofit}"
+    api "com.squareup.retrofit2:retrofit-adapters:${versions.retrofit}"
+    api "com.squareup.retrofit2:converter-gson:${versions.retrofit}"
+    api "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofit}"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jre7:${versions.kotlin}"
+    api "org.jetbrains.kotlin:kotlin-reflect:${versions.kotlin}"
+    api 'com.squareup.okio:okio:1.13.0'
+    api 'com.squareup.okhttp3:okhttp:3.8.1'
 
-    // butterknife
-    implementation "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    api "com.github.bumptech.glide:glide:${versions.glide}"
+    api "pub.devrel:easypermissions:${versions.easypermissions}"
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    api 'com.github.promeg:tinypinyin:2.0.3' // TinyPinyin核心包，约80KB
+//    kapt 'com.alibaba:arouter-compiler:1.1.4'
+//    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
-    // imagepicker
-    implementation "com.lzy.widget:imagepicker:$rootProject.imagepickerVersion"
-
-    // glide
-    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-
-    // easypermissions
-    implementation "pub.devrel:easypermissions:$rootProject.permissionsVersion"
-
-    //util
-    compile 'com.blankj:utilcode:1.7.1'
 }

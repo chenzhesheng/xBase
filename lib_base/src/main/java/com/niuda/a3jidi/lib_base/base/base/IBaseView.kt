@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.lib_base.base.base;
+package com.niuda.a3jidi.lib_base.base.base
 
 /**
  * (￣▽￣)"
@@ -8,5 +8,4 @@ package com.niuda.a3jidi.lib_base.base.base;
  * @date: 2017-11-12 15:39
  */
 
-public interface IBaseView {
-}
+interface IBaseView
