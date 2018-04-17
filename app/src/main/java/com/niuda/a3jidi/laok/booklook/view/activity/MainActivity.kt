@@ -6,8 +6,6 @@ import com.niuda.a3jidi.laok.R
 import com.niuda.a3jidi.laok.booklook.model.Book
 import com.niuda.a3jidi.laok.booklook.model.IBookView
 import com.niuda.a3jidi.laok.booklook.presenter.BookPresenter
-import com.niuda.a3jidi.lib_base.base.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     private val mBookPresenter = BookPresenter(this)

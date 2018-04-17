@@ -1,7 +1,5 @@
 package com.niuda.a3jidi.lib_base.base.base
 
-import android.content.Intent
-import android.widget.Toast
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
@@ -14,10 +12,6 @@ import pub.devrel.easypermissions.EasyPermissions
  */
 
 abstract class BasePermissionActivity : BaseActivity(), EasyPermissions.PermissionCallbacks {
-
-    public abstract override fun initLayout(): Int
-
-    public abstract override fun initView()
 
     override fun onPermissionsGranted(requestCode: Int, perms: List<String>) {
 
@@ -35,11 +29,4 @@ abstract class BasePermissionActivity : BaseActivity(), EasyPermissions.Permissi
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 
-
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
-            Toast.makeText(this, "权限添加成功", Toast.LENGTH_SHORT).show()
-        }
-    }
 }

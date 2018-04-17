@@ -1,20 +1,22 @@
 package com.gdth.base
 
 import android.app.Activity
-import android.os.Build
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import android.support.v4.app.DialogFragment
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import com.gdth.bank.base.annotation.Layout
 import com.niuda.a3jidi.lib_base.base.base.BaseActivity
+import java.util.*
 
 /**
- * Created by mac on 2017/9/13.
+ * Created by mac on 2017/6/29.
  */
-abstract class BaseFragment : Fragment() {
+abstract class BaseDialogFragment : DialogFragment() {
+    val FTAG = UUID.randomUUID().toString()
 
     fun initToolbar(toolbar: Toolbar, isShowHomeUp: Boolean) {
         initToolbar(toolbar, activity?.title.toString(), isShowHomeUp)
@@ -36,33 +38,42 @@ abstract class BaseFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    /**
+     * 标志位，View已经初始化完成。
+     * 2016/04/29
+     * 用isAdded()属性代替
+     * 2016/05/03
+     * isPrepared还是准一些,isAdded有可能出现onCreateView没走完但是isAdded了
+     */
+    private var isPrepared: Boolean = false
+    /**
+     * 是否第一次加载
+     */
+    private var isFirstLoad = true
+
     var mContext: Activity? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mContext = activity
-        var view =  inflater.inflate(getContentLayout(), container, false)
-        return view
+
+        isFirstLoad = true
+        var view: View? = null
+        val layoutRes = javaClass.getAnnotation(Layout::class.java)
+        if (layoutRes != null) {
+            view = inflater?.inflate(layoutRes.value, container, false)
+        } else {
+            initViews(inflater, container, savedInstanceState)
+        }
+        isPrepared = true
+        init(view)
+        return view!!
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        init(view, savedInstanceState)
-    }
+    fun initViews(layoutInflater: LayoutInflater?, viewGroup: ViewGroup?, savedInstanceState: Bundle?){}
 
-    fun initViews(layoutInflater: LayoutInflater?, viewGroup: ViewGroup?, savedInstanceState: Bundle?): View? = null
-
-    protected abstract fun getContentLayout(): Int
-    protected abstract fun init(view: View?, savedInstanceState: Bundle?)
+    protected abstract fun init(view: View?)
 
     override fun onDestroy() {
         super.onDestroy()
-    }
-
-    fun getColorValue(resId: Int): Int {
-        return if (Build.VERSION.SDK_INT >= 23) {
-            context?.getColor(resId)!!
-        } else {
-            resources.getColor(resId)
-        }
     }
 }

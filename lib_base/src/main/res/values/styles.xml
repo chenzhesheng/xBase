@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="toolbar_style" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="searchViewStyle">@style/appSearchView</item>
+    </style>
+
+
+    <style name="appSearchView" parent="Widget.AppCompat.SearchView">
+        <!--<item name="defaultQueryHint">姓名/身份证</item>-->
+        <item name="searchHintIcon">@null</item>
+    </style>
+
+    <!-- dialog -->
+    <style name="dialog_theme" >
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/button_corner_full</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>
