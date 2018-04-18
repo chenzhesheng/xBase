@@ -1,5 +1,7 @@
 package com.niuda.a3jidi.lib_base.base.base.app
 
+import android.content.Context
+import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.elvishew.xlog.LogLevel
@@ -22,11 +24,11 @@ open class BaseApp : MultiDexApplication(){
 
     override fun onCreate() {
         super.onCreate()
-        baseApp = this;
-        // 组件配置
+        baseApp = this
 
-        ARouter.openLog();     // 打印日志
-        ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        // 组件配置
+        ARouter.openLog()     // 打印日志
+        ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         ARouter.init(this);
         applicationDelegate.onCreate(this)
 
@@ -61,4 +63,16 @@ open class BaseApp : MultiDexApplication(){
         } else LeakCanary.install(this)
     }
 
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        MultiDex.install(this)
+        applicationDelegate = ApplicationDelegate()
+        applicationDelegate.attachBaseContext(base!!)
+
+    }
+
+    override fun onTerminate() {
+        super.onTerminate()
+        applicationDelegate.onTerminate(this)
+    }
 }

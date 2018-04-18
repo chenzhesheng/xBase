@@ -46,11 +46,11 @@ dependencies {
     // Android support
     api "com.android.support:appcompat-v7:${versions.supportLibrary}"
     api "com.android.support:cardview-v7:${versions.supportLibrary}"
+    api "com.android.support:support-annotations:${versions.supportLibrary}"
     api "com.android.support:design:${versions.supportLibrary}"
     api "com.android.support:recyclerview-v7:${versions.supportLibrary}"
     api "com.android.support:support-v4:${versions.supportLibrary}"
     api "com.android.support:design:${versions.supportLibrary}"
-    api "com.android.support:recyclerview-v7:${versions.supportLibrary}"
     api 'com.android.support:multidex:1.0.3'
 
     //network
@@ -70,6 +70,7 @@ dependencies {
     api 'com.alibaba:arouter-api:1.3.1'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
     kapt 'com.alibaba:arouter-compiler:1.1.4'
+    api "com.google.dagger:dagger:${versions.dagger}"
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
     api 'io.realm:android-adapters:2.0.0'
     api 'com.elvishew:xlog:1.3.0'

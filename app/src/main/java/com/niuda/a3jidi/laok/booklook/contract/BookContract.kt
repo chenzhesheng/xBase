@@ -1,5 +1,6 @@
 package com.niuda.a3jidi.laok.booklook.contract
 
+import com.niuda.a3jidi.laok.booklook.model.pojo.Book
 import com.niuda.a3jidi.lib_base.base.base.BasePresenter
 import com.niuda.a3jidi.lib_base.base.base.BaseView
 
@@ -8,7 +9,7 @@ import com.niuda.a3jidi.lib_base.base.base.BaseView
  */
 interface BookContract {
     interface BookView: BaseView{
-        fun Success(it: String?)
+        fun Success(it: Book)
     }
 
     interface BookPresenterIml: BasePresenter{

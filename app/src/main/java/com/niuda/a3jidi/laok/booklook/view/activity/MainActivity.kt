@@ -4,8 +4,11 @@ import android.content.Context
 import android.os.Bundle
 import com.niuda.a3jidi.laok.R
 import com.niuda.a3jidi.laok.booklook.contract.BookContract
+import com.niuda.a3jidi.laok.booklook.model.pojo.Book
+import com.niuda.a3jidi.laok.booklook.presenter.BookPresenter
 import com.niuda.a3jidi.lib_base.base.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : BaseActivity(),BookContract.BookView {
 
@@ -13,9 +16,15 @@ class MainActivity : BaseActivity(),BookContract.BookView {
 
     override fun layoutResId(): Int  = R.layout.activity_main
 
-    lateinit var presenter: BookContract.BookPresenterIml
+    @Inject
+    lateinit var presenter: BookPresenter
 
     override fun onCreated(savedInstanceState: Bundle?) {
+
+        DaggerPresenterComponent.builder()
+                .appComponent(BankApp.getAppComponent())
+                .presenterModule(PresenterModule(this))
+                .build().inject(this)
         initToolbar(true).setPageTitle("首页")
         initView()
     }
@@ -28,7 +37,7 @@ class MainActivity : BaseActivity(),BookContract.BookView {
     }
 
 
-    override fun Success(it: String?) {
+    override fun Success(it: Book) {
         textview.text = it.toString()
     }
 

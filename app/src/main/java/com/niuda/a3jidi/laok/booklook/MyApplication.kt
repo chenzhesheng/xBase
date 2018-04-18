@@ -6,7 +6,7 @@ import com.niuda.a3jidi.lib_base.base.constans.Const
 /**
  * 作者: created by chenzhesheng on 2018/4/17 18:06
  */
-class BaseApplication: BaseApp() {
+class MyApplication: BaseApp() {
 
     override fun onCreate() {
         super.onCreate()

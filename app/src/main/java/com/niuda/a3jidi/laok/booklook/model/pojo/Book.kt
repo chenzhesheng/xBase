@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.laok.booklook.model
+package com.niuda.a3jidi.laok.booklook.model.pojo
 
 /**
  * (￣▽￣)"
