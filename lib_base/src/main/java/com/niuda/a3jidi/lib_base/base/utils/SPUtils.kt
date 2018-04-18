@@ -25,7 +25,7 @@ class SPUtils private constructor(spName: String) {
         get() = sp.all
 
     init {
-        sp = Zson.get().app.getSharedPreferences(spName, Context.MODE_PRIVATE)
+        sp = Zson.get()!!.app.getSharedPreferences(spName, Context.MODE_PRIVATE)
     }
 
     /**

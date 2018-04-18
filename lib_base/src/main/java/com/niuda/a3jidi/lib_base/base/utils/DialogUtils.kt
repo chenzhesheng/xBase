@@ -24,7 +24,7 @@ object DialogUtils {
      * @return
      */
     fun createLoadingDialog(context: Context?, msg: String): Dialog? {
-        val v = LayoutInflater.from(context).inflate(R.layout.system_dialog_loading, null)// 得到加载view
+        val v = LayoutInflater.from(context).inflate(R.layout.system_dialog_loading1, null)// 得到加载view
         val layout = v.findViewById<LinearLayout>(R.id.dialog_view)// 加载布局
         // main.xml中的ImageView
         val spaceshipImage = v.findViewById<View>(R.id.img) as ImageView
