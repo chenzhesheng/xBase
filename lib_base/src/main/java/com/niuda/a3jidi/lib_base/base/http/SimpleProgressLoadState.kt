@@ -3,6 +3,7 @@ package com.niuda.a3jidi.lib_base.base.http
 import android.app.ProgressDialog
 import android.content.Context
 import android.text.TextUtils
+import android.widget.Toast
 import java.lang.ref.WeakReference
 
 /**
@@ -11,7 +12,7 @@ import java.lang.ref.WeakReference
 class SimpleProgressLoadState(val context: WeakReference<Context>?,
                               val title: String?,
                               val message: String?,
-                              val isShowAble: Boolean)  {
+                              val isShowAble: Boolean) : ProgressLoadState()  {
     constructor(context: WeakReference<Context>?, isShowAble: Boolean) : this(context, null, null, isShowAble)
 
     var progressDialog: ProgressDialog? = null
@@ -30,4 +31,34 @@ class SimpleProgressLoadState(val context: WeakReference<Context>?,
         }
     }
 
+    override fun onLoading() {
+        if (isShowAble && progressDialog != null)
+            progressDialog?.show()
+    }
+
+    override fun onLoadComplete() {
+        if (isShowAble && progressDialog != null)
+            progressDialog?.dismiss()
+    }
+
+    override fun dataEmpty() {
+    }
+
+    override fun onLoadFailure(error: Throwable?, errorFun: ((e: Throwable?) -> Unit)?) {
+        if (isShowAble && progressDialog != null)
+            progressDialog?.dismiss()
+        if (errorFun != null) {
+            errorFun(error)
+        } else {
+            if (context?.get() != null)
+                Toast.makeText(context.get(), error?.message, Toast.LENGTH_SHORT).show()
+//                Toasty.error(context.get(), error?.message)
+        }
+    }
+
+    override fun update(bytesRead: Long, contentLength: Long, done: Boolean) {
+        val progress = bytesRead * 100 / contentLength
+        if (isShowAble && progressDialog != null)
+            progressDialog?.progress = progress.toInt()
+    }
 }

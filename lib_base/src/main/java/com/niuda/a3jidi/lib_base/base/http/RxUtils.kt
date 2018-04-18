@@ -561,7 +561,7 @@ class RxUtils {
                 resultFun(t.content)
             }
         } else {
-            val mHttpException = HttpException(t.message)
+            val mHttpException = HttpException(t.message!!)
             if (errorFun != null)
                 errorFun(mHttpException)
         }

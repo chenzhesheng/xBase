@@ -51,11 +51,11 @@ object HttpsUtils {
         var trustManager: X509TrustManager? = null
     }
 
-    fun getSslSocketFactory(trustManager: X509TrustManager?, bksFile: InputStream, password: String, certificates: Array<InputStream>): SSLParams {
+    fun getSslSocketFactory(trustManager: X509TrustManager?, bksFile: InputStream?, password: String?, certificates: Array<InputStream>?): SSLParams {
         val sslParams = SSLParams()
         try {
             val keyManagers = prepareKeyManager(bksFile, password)
-            val trustManagers = prepareTrustManager(*certificates)
+            val trustManagers = prepareTrustManager(*certificates!!)
             val manager: X509TrustManager?
             if (trustManager != null) {
                 //优先使用用户自定义的TrustManager
