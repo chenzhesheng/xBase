@@ -99,4 +99,7 @@ dependencies {
     implementation project(':lib_base')
     kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+
 }

@@ -18,7 +18,6 @@ class BookPresenter @Inject constructor(): BookContract.BookPresenterIml{
 
     @Inject lateinit var mBookModel: BookModel
 
-
     override fun getBookView() {
         mBookModel.getBook()
     }

@@ -20,11 +20,6 @@ class MainActivity : BaseActivity(),BookContract.BookView {
     lateinit var presenter: BookPresenter
 
     override fun onCreated(savedInstanceState: Bundle?) {
-
-        DaggerPresenterComponent.builder()
-                .appComponent(BankApp.getAppComponent())
-                .presenterModule(PresenterModule(this))
-                .build().inject(this)
         initToolbar(true).setPageTitle("首页")
         initView()
     }
