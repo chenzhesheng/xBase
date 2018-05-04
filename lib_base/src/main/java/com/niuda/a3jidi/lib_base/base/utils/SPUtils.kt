@@ -14,7 +14,7 @@ import android.support.v4.util.SimpleArrayMap
 </pre> *
  */
 class SPUtils private constructor(spName: String) {
-    private val sp: SharedPreferences
+    private val sp: SharedPreferences = Zson.get()!!.app.getSharedPreferences(spName, Context.MODE_PRIVATE)
 
     /**
      * SP中获取所有键值对
@@ -23,10 +23,6 @@ class SPUtils private constructor(spName: String) {
      */
     val all: Map<String, *>
         get() = sp.all
-
-    init {
-        sp = Zson.get()!!.app.getSharedPreferences(spName, Context.MODE_PRIVATE)
-    }
 
     /**
      * SP中写入String

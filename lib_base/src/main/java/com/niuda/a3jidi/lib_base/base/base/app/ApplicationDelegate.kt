@@ -5,8 +5,8 @@ import android.content.Context
 import java.util.*
 
 /**
- * Created by COOTEK on 2017/8/29.
- */
+* 作者: created by chenzhesheng on 2017/8/29 21:17
+*/
 
 class ApplicationDelegate : IAppLife {
     private var list: List<IModuleConfig>? = null

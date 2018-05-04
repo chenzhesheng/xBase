@@ -1,6 +1,6 @@
 package com.gdth.api.http
 
-import com.niuda.a3jidi.lib_base.base.base.app.BaseApp
+import com.niuda.a3jidi.lib_base.base.base.BaseApp
 import com.niuda.a3jidi.lib_base.base.constans.Const
 import com.niuda.a3jidi.lib_base.base.http.CookieJarImpl
 import com.niuda.a3jidi.lib_base.base.http.HttpLoggingInterceptor

@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.lib_base.base.base.app
+package com.niuda.a3jidi.lib_base.base.base
 
 import android.content.Context
 import android.support.multidex.MultiDex
@@ -6,7 +6,7 @@ import android.support.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.elvishew.xlog.LogLevel
 import com.elvishew.xlog.XLog
-import com.github.promeg.pinyinhelper.Pinyin
+import com.niuda.a3jidi.lib_base.base.base.app.ApplicationDelegate
 import com.niuda.a3jidi.lib_base.base.constans.Const
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
@@ -40,7 +40,6 @@ open class BaseApp : MultiDexApplication(){
                 .build()
         Realm.setDefaultConfiguration(config)
         XLog.init(if (Const.isDebug) LogLevel.ALL else LogLevel.NONE)
-        Pinyin.init(Pinyin.newConfig())
 
     }
 
