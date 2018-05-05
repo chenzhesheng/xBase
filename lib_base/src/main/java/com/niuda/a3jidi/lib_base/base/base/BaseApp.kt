@@ -6,11 +6,10 @@ import android.support.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.elvishew.xlog.LogLevel
 import com.elvishew.xlog.XLog
+import com.niuda.a3jidi.lib_base.BuildConfig
 import com.niuda.a3jidi.lib_base.base.base.app.ApplicationDelegate
-import com.niuda.a3jidi.lib_base.base.constans.Const
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
-import dagger.android.HasActivityInjector
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
@@ -18,7 +17,6 @@ import io.realm.RealmConfiguration
  * Created by Administrator on 8/3/2018.
  */
 open class BaseApp : MultiDexApplication() {
-
     lateinit var token: String
     lateinit var mRefWatcher: RefWatcher
     lateinit var applicationDelegate: ApplicationDelegate
@@ -26,6 +24,12 @@ open class BaseApp : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         baseApp = this
+
+        //初始化LeakCanary
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return
+        }
+        LeakCanary.install(this)
 
         // 组件配置
         ARouter.openLog()     // 打印日志
@@ -40,8 +44,9 @@ open class BaseApp : MultiDexApplication() {
                 .directory(getExternalFilesDir(null))
                 .build()
         Realm.setDefaultConfiguration(config)
-        XLog.init(if (Const.isDebug) LogLevel.ALL else LogLevel.NONE)
 
+        //初始化xLog
+        XLog.init(if (BuildConfig.DEBUG) LogLevel.ALL else LogLevel.NONE)
     }
 
 

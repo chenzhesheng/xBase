@@ -108,7 +108,7 @@ class OkHttpHeler {
 //                    .addHeader("channel", channel)
 //                    .addHeader("model", Build.BRAND + " " + Build.MODEL)
             request = builder.build()
-            chain?.proceed(request)
+            chain.proceed(request)
         }
     }
 

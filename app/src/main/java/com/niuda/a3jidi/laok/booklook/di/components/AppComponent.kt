@@ -1,25 +1,33 @@
 package com.niuda.a3jidi.laok.booklook.di.components
 
-import android.content.pm.PackageManager
-import com.niuda.a3jidi.laok.booklook.contract.API
+import android.app.Application
+import com.niuda.a3jidi.laok.booklook.MyApplication
 import com.niuda.a3jidi.laok.booklook.di.modules.AppModule
 import com.niuda.a3jidi.laok.booklook.di.modules.MainActivityModule
-import com.niuda.a3jidi.lib_base.base.base.BaseApp
+import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
-import okhttp3.OkHttpClient
 
 /**
 * 作者: created by chenzhesheng on 2017/5/20 09:46
 */
 //@Singleton
-@Component(modules = [AndroidSupportInjectionModule::class, AppModule::class, MainActivityModule::class])
-interface AppComponent {
-    fun inject(baseApp: BaseApp)
+@Component(modules = [AndroidSupportInjectionModule::class
+    , AppModule::class
+    , MainActivityModule::class
+//    , FragmentModule::class
+])
+interface AppComponent : AndroidInjector<MyApplication> {
 
-    fun getAPI(): API
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(application: Application): AppComponent.Builder
 
-    fun getPackageManager(): PackageManager
+        fun build(): AppComponent
+    }
 
-    fun getNewOkHttpClientBuilder(): OkHttpClient.Builder
+    override fun inject(application: MyApplication)
+
 }

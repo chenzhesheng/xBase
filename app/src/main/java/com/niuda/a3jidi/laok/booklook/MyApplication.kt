@@ -1,8 +1,6 @@
 package com.niuda.a3jidi.laok.booklook
 
 import android.app.Activity
-import android.app.Application
-import com.niuda.a3jidi.laok.booklook.di.components.AppComponent
 import com.niuda.a3jidi.lib_base.base.base.BaseApp
 import com.niuda.a3jidi.lib_base.base.constans.Const
 import dagger.android.AndroidInjector
@@ -23,7 +21,7 @@ class MyApplication: BaseApp() , HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.create().inject(this)
+        DaggerAppComponent.builder().application(this).build()
 
         Const.service_url = "https://api.douban.com/v2"
     }

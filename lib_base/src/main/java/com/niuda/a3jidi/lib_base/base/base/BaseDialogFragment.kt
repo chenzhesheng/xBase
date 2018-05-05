@@ -60,7 +60,7 @@ abstract class BaseDialogFragment : DialogFragment() {
         var view: View? = null
         val layoutRes = javaClass.getAnnotation(Layout::class.java)
         if (layoutRes != null) {
-            view = inflater?.inflate(layoutRes.value, container, false)
+            view = inflater.inflate(layoutRes.value, container, false)
         } else {
             initViews(inflater, container, savedInstanceState)
         }
