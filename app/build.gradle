@@ -97,7 +97,8 @@ tasks.whenTaskAdded { task ->
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':lib_base')
-    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+//    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
+//    kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'

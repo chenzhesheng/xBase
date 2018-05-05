@@ -1,23 +1,29 @@
 package com.niuda.a3jidi.laok.booklook
 
+import android.app.Activity
+import android.app.Application
 import com.niuda.a3jidi.laok.booklook.di.components.AppComponent
-import com.niuda.a3jidi.laok.booklook.di.modules.AppModule
-import com.niuda.a3jidi.laok.booklook.di.scopes.DaggerUserAppComponent
 import com.niuda.a3jidi.lib_base.base.base.BaseApp
 import com.niuda.a3jidi.lib_base.base.constans.Const
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
+import javax.inject.Inject
 
 /**
  * 作者: created by chenzhesheng on 2018/4/17 18:06
  */
-class MyApplication: BaseApp() {
+class MyApplication: BaseApp() , HasActivityInjector {
 
-    private lateinit var userAppComponent: AppComponent
+    @Inject lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
+
+    override fun activityInjector(): AndroidInjector<Activity> {
+        return dispatchingActivityInjector
+    }
 
     override fun onCreate() {
         super.onCreate()
-
-        userAppComponent = DaggerUserAppComponent.builder().userAppModule(AppModule(baseApp)).build()
-        userAppComponent.inject(BaseApp.baseApp)
+        DaggerAppComponent.create().inject(this)
 
         Const.service_url = "https://api.douban.com/v2"
     }
@@ -27,6 +33,5 @@ class MyApplication: BaseApp() {
     companion object {
         lateinit var baseApp: MyApplication
         fun get(): BaseApp = baseApp
-        fun getAppComponent(): AppComponent? = baseApp.userAppComponent
     }
 }

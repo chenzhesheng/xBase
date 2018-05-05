@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import com.elvishew.xlog.XLog
 import com.niuda.a3jidi.laok.booklook.contract.API
+import com.niuda.a3jidi.laok.booklook.di.Subcomponent.MainSubComponent
 import com.niuda.a3jidi.lib_base.base.base.BaseApp
 import com.niuda.a3jidi.lib_base.base.constans.Const
 import com.niuda.a3jidi.lib_base.base.http.CookieJarImpl
@@ -26,16 +27,16 @@ import javax.inject.Singleton
 /**
 * 作者: created by chenzhesheng on 2017/5/20 09:49
 */
-@Module
-class AppModule(val userApp: BaseApp) {
+@Module(subcomponents = [MainSubComponent::class])
+class AppModule(val baseApp: BaseApp) {
 
     @Provides
     @Singleton
-    fun provideApp(): BaseApp = userApp
+    fun provideApp(): BaseApp = baseApp
 
     @Provides
     @Singleton
-    fun provideConetxt(): Context = userApp.applicationContext
+    fun provideConetxt(): Context = baseApp.applicationContext
 
     @Provides
     @Singleton
@@ -46,13 +47,13 @@ class AppModule(val userApp: BaseApp) {
 
     @Provides
     @Singleton
-    fun providePackageManager(): PackageManager = userApp.packageManager
+    fun providePackageManager(): PackageManager = baseApp.packageManager
 
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         val cacheControl = newCacheControl()
-        val cookieJar = CookieJarImpl(PersistentCookieStore(userApp))
+        val cookieJar = CookieJarImpl(PersistentCookieStore(baseApp))
         var sslParams: HttpsUtils.SSLParams? = null
         try {
             sslParams = HttpsUtils.getSslSocketFactory(null, null, null, null)

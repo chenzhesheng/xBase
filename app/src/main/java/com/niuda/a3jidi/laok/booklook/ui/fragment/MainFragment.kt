@@ -1,4 +1,4 @@
-package com.niuda.a3jidi.laok.booklook.view.fragment
+package com.niuda.a3jidi.laok.booklook.ui.fragment
 
 import android.os.Bundle
 import android.view.View

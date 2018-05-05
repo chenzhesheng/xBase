@@ -1,7 +1,7 @@
 package com.niuda.a3jidi.laok.booklook.di.modules
 
-import android.app.Activity
 import com.niuda.a3jidi.laok.booklook.di.scopes.PerActivity
+import com.niuda.a3jidi.lib_base.base.base.BaseView
 import dagger.Module
 import dagger.Provides
 
@@ -13,13 +13,11 @@ import dagger.Provides
  * 提供baseactivity的module
  */
 @Module
-class ActivityModule(private val activity: Activity) {
+open class ActivityModule(private val baseView: BaseView) {
+
 
     @Provides
     @PerActivity
-    fun provideActivity(): Activity {
-        return activity
-    }
-
+    fun provideBaseView(): BaseView = baseView
 
 }

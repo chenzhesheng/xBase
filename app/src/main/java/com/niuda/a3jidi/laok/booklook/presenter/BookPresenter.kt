@@ -1,7 +1,7 @@
 package com.niuda.a3jidi.laok.booklook.presenter
 
 import com.niuda.a3jidi.laok.booklook.contract.BookContract
-import com.niuda.a3jidi.laok.booklook.model.BookModel
+import com.niuda.a3jidi.laok.booklook.model.MainModel
 import javax.inject.Inject
 
 
@@ -13,10 +13,9 @@ import javax.inject.Inject
  * @date: 2017-11-12 15:45
  */
 
-
 class BookPresenter @Inject constructor(): BookContract.BookPresenterIml{
 
-    @Inject lateinit var mBookModel: BookModel
+    @Inject lateinit var mBookModel: MainModel
 
     override fun getBookView() {
         mBookModel.getBook()

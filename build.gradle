@@ -15,7 +15,7 @@ buildscript {
 
             'glide'         : "3.7.0",
             'easypermissions': "1.1.1",
-            'dagger'        : '2.11'
+            'dagger'        : '2.14.1'
     ]
     
     repositories {

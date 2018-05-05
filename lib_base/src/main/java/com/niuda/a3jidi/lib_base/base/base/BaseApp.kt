@@ -10,13 +10,14 @@ import com.niuda.a3jidi.lib_base.base.base.app.ApplicationDelegate
 import com.niuda.a3jidi.lib_base.base.constans.Const
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
+import dagger.android.HasActivityInjector
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
 /**
  * Created by Administrator on 8/3/2018.
  */
-open class BaseApp : MultiDexApplication(){
+open class BaseApp : MultiDexApplication() {
 
     lateinit var token: String
     lateinit var mRefWatcher: RefWatcher

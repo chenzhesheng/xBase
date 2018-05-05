@@ -11,13 +11,14 @@ import dagger.Module
 import javax.inject.Inject
 
 /**
- * 作者: created by chenzhesheng on 2018/4/18 16:09
- */
+* 作者: created by chenzhesheng on 2017/6/16 10:19
+*/
 
 @Module
-class BookModel @Inject constructor(val baseView: BaseView, val api: API){
+class MainModel @Inject constructor(val baseView: BaseView, val api: API){
 
-    @Inject lateinit var mGson : Gson
+    @Inject
+    lateinit var mGson : Gson
 
 
     fun getBook(){
@@ -26,10 +27,18 @@ class BookModel @Inject constructor(val baseView: BaseView, val api: API){
             val mBook = mGson.fromJson<Book>(it.toString(), Book::class.java)
             bookView.Success(mBook)
         },{
-            Toast.makeText(baseView.getViewContext(), "獲取失敗", Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseView.getViewContext(), "获取失败", Toast.LENGTH_SHORT).show()
         },{
             Toast.makeText(baseView.getViewContext(), "获取成功", Toast.LENGTH_SHORT).show()
         })
+    }
+
+    interface CallBack {
+        fun data(info: Book)
+    }
+
+    fun getInfo(callBack: CallBack) {
+        callBack.data(Book())
     }
 
 }
