@@ -2,13 +2,13 @@
 apply from:"config.gradle"
 
 buildscript {
-    ext.kotlin_version = '1.2.41'
+    ext.kotlin_version = '1.2.71'
     ext.versions = [
-            'kotlin'        : '1.2.31',
+            'kotlin'        : '1.2.71',
             'minSdk'        : 15,
-            'targetSdk'     : 27,
-            'buildTools'    : "26.0.2",
-            'supportLibrary': "27.1.1",
+            'targetSdk'     : 28,
+            'buildTools'    : "28.0.0",
+            'supportLibrary': "28.0.0",
 
             'retrofit'      : "2.3.0",
             'rxandroid'     : "2.0.1",
@@ -16,7 +16,7 @@ buildscript {
 
             'glide'         : "3.7.0",
             'easypermissions': "1.1.1",
-            'dagger'        : '2.14.1'
+            'dagger'        : '2.15'
     ]
     
     repositories {
@@ -27,7 +27,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
         classpath "io.realm:realm-gradle-plugin:3.7.0"
         classpath 'com.library.tangxiaolv:dexknife-plus:1.0.4'

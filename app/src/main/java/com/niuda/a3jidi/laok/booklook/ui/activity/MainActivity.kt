@@ -3,6 +3,7 @@ package com.niuda.a3jidi.laok.booklook.ui.activity
 import android.content.Context
 import android.os.Bundle
 import com.niuda.a3jidi.laok.R
+import com.niuda.a3jidi.laok.booklook.contract.API
 import com.niuda.a3jidi.laok.booklook.contract.BookContract
 import com.niuda.a3jidi.laok.booklook.model.pojo.Book
 import com.niuda.a3jidi.laok.booklook.presenter.BookPresenter
@@ -13,6 +14,8 @@ import javax.inject.Inject
 
 //@TranslucentStatusBar
 class MainActivity : BaseActivity(),BookContract.BookView {
+
+    lateinit var api: API
 
     override fun getViewContext(): Context = this
 
@@ -29,7 +32,7 @@ class MainActivity : BaseActivity(),BookContract.BookView {
 
     private fun initView() {
         button_main.setOnClickListener {
-            presenter.getBookView()
+            presenter.getBookView(this, api)
         }
     }
 

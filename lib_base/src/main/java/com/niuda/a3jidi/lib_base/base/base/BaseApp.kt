@@ -2,21 +2,27 @@ package com.niuda.a3jidi.lib_base.base.base
 
 import android.content.Context
 import android.support.multidex.MultiDex
-import android.support.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.elvishew.xlog.LogLevel
 import com.elvishew.xlog.XLog
 import com.niuda.a3jidi.lib_base.BuildConfig
 import com.niuda.a3jidi.lib_base.base.base.app.ApplicationDelegate
+import com.niuda.a3jidi.lib_base.base.di.components.AppComponent
+import com.niuda.a3jidi.lib_base.base.di.components.DaggerAppComponent
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
+import dagger.android.DaggerApplication
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
 /**
- * Created by Administrator on 8/3/2018.
- */
-open class BaseApp : MultiDexApplication() {
+* 作者: created by chenzhesheng on 8/3/2018 18:23
+*/
+open class BaseApp : DaggerApplication() {
+
+    override fun applicationInjector(): AppComponent =
+            DaggerAppComponent.builder().application(this).build()
+
     lateinit var token: String
     lateinit var mRefWatcher: RefWatcher
     lateinit var applicationDelegate: ApplicationDelegate
@@ -41,7 +47,7 @@ open class BaseApp : MultiDexApplication() {
         val config = RealmConfiguration.Builder()
                 .name("laok.realm")
                 .schemaVersion(1)
-                .directory(getExternalFilesDir(null))
+//                .directory(getExternalFilesDir(null))
                 .build()
         Realm.setDefaultConfiguration(config)
 
