@@ -3,8 +3,8 @@ package com.niuda.a3jidi.lib_base.base.http
 import android.content.Context
 import android.text.TextUtils
 import android.util.Log
-
 import rx.Observable
+
 import rx.Subscriber
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers

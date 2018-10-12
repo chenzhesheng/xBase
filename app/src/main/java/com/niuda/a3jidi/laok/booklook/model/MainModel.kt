@@ -17,7 +17,7 @@ import dagger.Module
 class MainModel: BaseModel() {
 
     fun getBook(baseView: BaseView, api: API){
-        RxUtils.get(baseView.getViewContext()).simpleRequest(api.getBook(),{
+        RxUtils.get(baseView.getViewContext()).simpleRequest(api.getBook(),"正在获取数据。。",{
             val bookView = baseView as BookContract.BookView
             val mBook = mGson.fromJson<Book>(it.toString(), Book::class.java)
             bookView.Success(mBook)

@@ -74,7 +74,7 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val fragments = supportFragmentManager.fragments
-        if (fragments!=null&&fragments.isNotEmpty()) {
+        if (fragments.isNotEmpty()) {
             fragments.forEach {
                 it.onActivityResult(requestCode, resultCode, data)
             }
