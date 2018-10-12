@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'realm-android'
-apply plugin: 'dexknifePlus'
 
 def VERSION_NAME = "1.0"
 def apkName
@@ -97,12 +96,6 @@ tasks.whenTaskAdded { task ->
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':lib_base')
-
-//    implementation "com.google.dagger:dagger:${versions.dagger}"
-//    implementation "com.google.dagger:dagger-android:${versions.dagger}"
-//    implementation "com.google.dagger:dagger-android-support:${versions.dagger}"
-//    kapt "com.google.dagger:dagger-compiler:${versions.dagger}"
-//    kapt "com.google.dagger:dagger-android-processor:${versions.dagger}"
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'

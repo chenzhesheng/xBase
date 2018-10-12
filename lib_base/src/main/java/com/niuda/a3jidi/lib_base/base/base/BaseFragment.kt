@@ -40,8 +40,7 @@ abstract class BaseFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mContext = activity
-        var view =  inflater.inflate(getContentLayout(), container, false)
-        return view
+        return inflater.inflate(getContentLayout(), container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

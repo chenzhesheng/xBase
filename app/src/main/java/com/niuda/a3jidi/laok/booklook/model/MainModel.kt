@@ -7,13 +7,11 @@ import com.niuda.a3jidi.laok.booklook.model.pojo.Book
 import com.niuda.a3jidi.lib_base.base.base.BaseView
 import com.niuda.a3jidi.lib_base.base.di.modules.BaseModel
 import com.niuda.a3jidi.lib_base.base.http.RxUtils
-import dagger.Module
 
 /**
 * 作者: created by chenzhesheng on 2017/6/16 10:19
 */
 
-@Module
 class MainModel: BaseModel() {
 
     fun getBook(baseView: BaseView, api: API){

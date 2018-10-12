@@ -17,7 +17,7 @@ import javax.inject.Inject
 
 class BookPresenter @Inject constructor(): BookContract.BookPresenterIml{
 
-    @Inject lateinit var mBookModel: MainModel
+    var mBookModel = MainModel()
 
     override fun getBookView(baseView: BaseView, api: API) {
         mBookModel.getBook(baseView, api)

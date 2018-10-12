@@ -1,7 +1,6 @@
 package com.niuda.a3jidi.lib_base.base.base.app
 
 import android.content.Context
-import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 
 import java.util.ArrayList
