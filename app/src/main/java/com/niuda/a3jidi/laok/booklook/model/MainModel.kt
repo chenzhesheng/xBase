@@ -4,17 +4,19 @@ import android.widget.Toast
 import com.niuda.a3jidi.laok.booklook.contract.API
 import com.niuda.a3jidi.laok.booklook.contract.BookContract
 import com.niuda.a3jidi.laok.booklook.model.pojo.Book
+import com.niuda.a3jidi.lib_base.base.base.BaseModel
 import com.niuda.a3jidi.lib_base.base.base.BaseView
-import com.niuda.a3jidi.lib_base.base.di.modules.BaseModel
 import com.niuda.a3jidi.lib_base.base.http.RxUtils
 
 /**
 * 作者: created by chenzhesheng on 2017/6/16 10:19
 */
 
-class MainModel: BaseModel() {
+class MainModel : BaseModel() {
 
-    fun getBook(baseView: BaseView, api: API){
+    private lateinit var api: API
+
+    fun getBook(baseView: BaseView){
         RxUtils.get(baseView.getViewContext()).simpleRequest(api.getBook(),"正在获取数据。。",{
             val bookView = baseView as BookContract.BookView
             val mBook = mGson.fromJson<Book>(it.toString(), Book::class.java)
@@ -26,11 +28,9 @@ class MainModel: BaseModel() {
         })
     }
 
-    interface CallBack {
-        fun data(info: Book)
-    }
 
-    fun getInfo(callBack: CallBack) {
+
+    fun getInfo(callBack: BookContract.CallBack) {
         callBack.data(Book())
     }
 

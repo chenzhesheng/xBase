@@ -1,5 +1,6 @@
 package com.niuda.a3jidi.lib_base.base.base
 
+import android.app.Application
 import android.content.Context
 import android.support.multidex.MultiDex
 import com.alibaba.android.arouter.launcher.ARouter
@@ -7,21 +8,15 @@ import com.elvishew.xlog.LogLevel
 import com.elvishew.xlog.XLog
 import com.niuda.a3jidi.lib_base.BuildConfig
 import com.niuda.a3jidi.lib_base.base.base.app.ApplicationDelegate
-import com.niuda.a3jidi.lib_base.base.di.components.AppComponent
-import com.niuda.a3jidi.lib_base.base.di.components.DaggerAppComponent
 import com.squareup.leakcanary.LeakCanary
 import com.squareup.leakcanary.RefWatcher
-import dagger.android.DaggerApplication
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
 /**
 * 作者: created by chenzhesheng on 8/3/2018 18:23
 */
-open class BaseApp : DaggerApplication() {
-
-    override fun applicationInjector(): AppComponent =
-            DaggerAppComponent.builder().application(this).build()
+open class BaseApp : Application() {
 
     lateinit var token: String
     lateinit var mRefWatcher: RefWatcher

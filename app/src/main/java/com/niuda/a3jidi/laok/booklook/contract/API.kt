@@ -6,7 +6,7 @@ import rx.Observable
 
 interface API {
 
-    @GET("/book/1220562")
+    @GET("/v2/book/1220562")
     fun getBook(): Observable<HttpJsonResult>
 
 }

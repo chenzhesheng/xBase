@@ -13,6 +13,10 @@ interface BookContract {
     }
 
     interface BookPresenterIml: BasePresenter{
-        fun getBookView(baseView: BaseView, api: API)
+        fun getBookView(baseView: BaseView)
+    }
+
+    interface CallBack {
+        fun data(info: Book)
     }
 }

@@ -1,7 +1,7 @@
 package com.gdth.api.http
 
+import com.gdth.api.http.OkHttpHeler.Holder.INSTANCE
 import com.niuda.a3jidi.lib_base.base.base.BaseApp
-import com.niuda.a3jidi.lib_base.base.constans.Const
 import com.niuda.a3jidi.lib_base.base.http.CookieJarImpl
 import com.niuda.a3jidi.lib_base.base.http.HttpLoggingInterceptor
 import com.niuda.a3jidi.lib_base.base.http.HttpsUtils
@@ -33,6 +33,13 @@ class OkHttpHeler {
     private var okHttpClient: OkHttpClient? = null
     private var cacheControl: CacheControl? = null
     private var retrofit: Retrofit? = null
+    private var baseUrl: String? = null
+
+    fun baseUrl(url : String): OkHttpHeler {
+        baseUrl = url
+        return INSTANCE
+    }
+
 
     /**
      * 初始化okhttpclient retrofit
@@ -47,14 +54,14 @@ class OkHttpHeler {
                     .readTimeout(10, TimeUnit.SECONDS)
                     .writeTimeout(10, TimeUnit.SECONDS)
                     .cookieJar(cookieJar)
-                    .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
+                    .sslSocketFactory(sslParams?.sSLSocketFactory, sslParams?.trustManager)
                     .hostnameVerifier(HttpsUtils.UnSafeHostnameVerifier)
                     .addInterceptor(cacheInterceptor())
                     .addInterceptor(headersInterceptor())
                     .addInterceptor(HttpLoggingInterceptor(
                             level ?: HttpLoggingInterceptor.Level.BODY))
                     .build()
-            retrofit = initRetrofit(okHttpClient, Const.service_url)
+            retrofit = initRetrofit(okHttpClient!!, baseUrl!!)
         }
         return this
     }
@@ -92,7 +99,7 @@ class OkHttpHeler {
         return Interceptor { chain ->
             var request = chain.request()
             request = request.newBuilder().cacheControl(cacheControl).build()
-            chain?.proceed(request)
+            chain.proceed(request)
         }
     }
 
@@ -115,14 +122,14 @@ class OkHttpHeler {
     /**
      * 初始化Retrofit
      */
-    fun initRetrofit(okHttpClient: OkHttpClient?, baseUrl: String): Retrofit {
+    fun initRetrofit(okHttpClient: OkHttpClient, baseUrl: String): Retrofit {
         return initRetrofit(okHttpClient, baseUrl, GsonConverterFactory.create())
     }
 
     /**
      * 初始化Retrofit
      */
-    fun initRetrofit(okHttpClient: OkHttpClient?, baseUrl: String, factory: Converter.Factory?): Retrofit {
+    fun initRetrofit(okHttpClient: OkHttpClient, baseUrl: String, factory: Converter.Factory?): Retrofit {
         val retrofit = Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(baseUrl)

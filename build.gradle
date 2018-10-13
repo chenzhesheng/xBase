@@ -15,8 +15,7 @@ buildscript {
             'rxjava'        : "2.1.3",
 
             'glide'         : "3.7.0",
-            'easypermissions': "1.1.1",
-            'dagger'        : '2.15'
+            'easypermissions': "1.1.1"
     ]
     
     repositories {
