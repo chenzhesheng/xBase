@@ -1,3 +1,79 @@
 ext {
-    isAlone = false ; // false:作为Lib组件存在  , true： 作为Application存在
+
+    android = [
+            compileSdkVersion       : 28,
+            buildToolsVersion       : "28.0.3",
+            minSdkVersion           : 14,
+            targetSdkVersion        : 28,
+            versionCode             : 1,
+            versionName             : "0.1"
+    ]
+
+    version = [
+            androidSupportSdkVersion: "28.0.0",
+            retrofitSdkVersion      : "2.4.0",
+            dagger2SdkVersion       : "2.15",
+            glideSdkVersion         : "4.6.1",
+            butterknifeSdkVersion   : "8.8.1",
+            rxlifecycleSdkVersion   : "1.0",
+            rxlifecycle2SdkVersion  : "2.2.1",
+            espressoSdkVersion      : "3.0.1",
+            canarySdkVersion        : "1.5.4"
+    ]
+
+    dependencies = [
+            //support
+            "appcompat-v7"             : "com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
+            "design"                   : "com.android.support:design:${version["androidSupportSdkVersion"]}",
+            "support-v4"               : "com.android.support:support-v4:${version["androidSupportSdkVersion"]}",
+            "cardview-v7"              : "com.android.support:cardview-v7:${version["androidSupportSdkVersion"]}",
+            "annotations"              : "com.android.support:support-annotations:${version["androidSupportSdkVersion"]}",
+            "recyclerview-v7"          : "com.android.support:recyclerview-v7:${version["androidSupportSdkVersion"]}",
+
+
+            //network
+            "retrofit"                 : "com.squareup.retrofit2:retrofit:${version["retrofitSdkVersion"]}",
+            "retrofit-converter-gson"  : "com.squareup.retrofit2:converter-gson:${version["retrofitSdkVersion"]}",
+            "retrofit-adapter-rxjava"  : "com.squareup.retrofit2:adapter-rxjava:${version["retrofitSdkVersion"]}",
+            "retrofit-adapter-rxjava2" : "com.squareup.retrofit2:adapter-rxjava2:${version["retrofitSdkVersion"]}",
+            "okhttp3"                  : "com.squareup.okhttp3:okhttp:3.10.0",
+            "okhttp-urlconnection"     : "com.squareup.okhttp:okhttp-urlconnection:2.0.0",
+            "glide"                    : "com.github.bumptech.glide:glide:${version["glideSdkVersion"]}",
+            "glide-compiler"           : "com.github.bumptech.glide:compiler:${version["glideSdkVersion"]}",
+            "glide-loader-okhttp3"     : "com.github.bumptech.glide:okhttp3-integration:${version["glideSdkVersion"]}",
+            "picasso"                  : "com.squareup.picasso:picasso:2.5.2",
+
+            //rx2
+            "rxandroid2"                : "io.reactivex.rxjava2:rxandroid:2.0.2",
+            "rxjava2"                   : "io.reactivex.rxjava2:rxjava:2.1.12",
+            "rxlifecycle2"              : "com.trello.rxlifecycle2:rxlifecycle:${version["rxlifecycle2SdkVersion"]}",
+            "rxlifecycle2-android"      : "com.trello.rxlifecycle2:rxlifecycle-android:${version["rxlifecycle2SdkVersion"]}",
+            "rxlifecycle2-components"   : "com.trello.rxlifecycle2:rxlifecycle-components:${version["rxlifecycle2SdkVersion"]}",
+            "rxcache2"                  : "com.github.VictorAlbertos.RxCache:runtime:1.8.3-2.x",
+            "rxpermissions2"            : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar",
+            "rxerrorhandler2"           : "me.jessyan:rxerrorhandler:2.1.1",
+            "rxcache-jolyglot-gson"    : "com.github.VictorAlbertos.Jolyglot:gson:0.0.4",
+
+            //view
+            "paginate"                 : "com.github.markomilos:paginate:0.5.1",
+
+            //tools
+            "dagger2"                  : "com.google.dagger:dagger:${version["dagger2SdkVersion"]}",
+            "dagger2-android"          : "com.google.dagger:dagger-android:${version["dagger2SdkVersion"]}",
+            "dagger2-android-support"  : "com.google.dagger:dagger-android-support:${version["dagger2SdkVersion"]}",
+            "dagger2-compiler"         : "com.google.dagger:dagger-compiler:${version["dagger2SdkVersion"]}",
+            "dagger2-android-processor": "com.google.dagger:dagger-android-processor:${version["dagger2SdkVersion"]}",
+            "gson"                     : "com.google.code.gson:gson:2.8.2",
+            "javax.annotation"         : "javax.annotation:jsr250-api:1.0",
+            "progressmanager"          : "me.jessyan:progressmanager:1.5.0",
+            "retrofit-url-manager"     : "me.jessyan:retrofit-url-manager:1.4.0",
+            "lifecyclemodel"           : "me.jessyan:lifecyclemodel:1.0.1",
+
+            //test
+            "junit"                    : "junit:junit:4.12",
+            "androidJUnitRunner"       : "android.support.test.runner.AndroidJUnitRunner",
+            "timber"                   : "com.jakewharton.timber:timber:4.7.0",
+            "canary-debug"             : "com.squareup.leakcanary:leakcanary-android:${version["canarySdkVersion"]}",
+            "canary-release"           : "com.squareup.leakcanary:leakcanary-android-no-op:${version["canarySdkVersion"]}"
+    ]
 }

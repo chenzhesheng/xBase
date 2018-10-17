@@ -2,102 +2,66 @@ apply plugin: "com.android.application"
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'realm-android'
-
-def VERSION_NAME = "1.0"
-def apkName
-
-kapt {
-    arguments {
-        arg("moduleName", project.getName())
-    }
-}
 
 android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    useLibrary 'org.apache.http.legacy'
 
-    ext.getVersionName = "1.0"
-    ext.getVersionCode = 1
-
-    compileSdkVersion versions.targetSdk
-    buildToolsVersion versions.buildTools
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
 
     defaultConfig {
         applicationId "com.niuda.a3jidi.laok"
-        minSdkVersion versions.minSdk
-        targetSdkVersion versions.targetSdk
-        versionCode getVersionCode()
-        versionName getVersionName()
-        multiDexEnabled = true//突破65535限制
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                includeCompileClasspath = true
-            }
-        }
-        ndk {
-            //根据需要 自行选择添加的对应cpu类型的.so库。
-            abiFilters 'x86','armeabi', 'armeabi-v7a'//, 'arm64-v8a'
-            // 还可以添加  'x86_64', 'mips', 'mips64' 'armeabi-v7a', 'arm64-v8a'
-        }
-
-        packagingOptions {
-            exclude 'META-INF/rxjava.properties'
-            // ... and any other excludes go here
-        }
-
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
     }
 
     // 定义生成的apk的名称
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            // 定义release版本生成的apk的名字 VERSION_NAME
-            apkName = "laok" + VERSION_NAME + "_release.apk";
-        }
-
         debug{
-            // 定义debug版本生成的apk的名字
-            apkName = "laok_" + VERSION_NAME + "_debug.apk";
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
-
-
-    buildTypes {
-        release {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "boolean", "USE_CANARY", "true"
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-}
-
-// 修改apk build的名字
-android.applicationVariants.all { variant ->
-    variant.outputs.all {
-        if (outputFileName.endsWith(".apk")) {
-            //这里使用之前定义apk文件名称
-            outputFileName = apkName
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "boolean", "USE_CANARY", "false"
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
 
-tasks.whenTaskAdded { task ->
-    if (task.name.equals("lint")) {
-        task.enabled = false
+    lintOptions {
+        disable 'InvalidPackage'
+        disable "ResourceType"
+        abortOnError false
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    kapt rootProject.ext.dependencies["dagger2-compiler"]
+    implementation rootProject.ext.dependencies["progressmanager"]
+    implementation rootProject.ext.dependencies["retrofit-url-manager"]
+    implementation rootProject.ext.dependencies["lifecyclemodel"]
+
+
+    //arms
     implementation project(':lib_base')
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-
+    //test
+    testImplementation rootProject.ext.dependencies["junit"]
+    debugImplementation rootProject.ext.dependencies["canary-debug"]
+    releaseImplementation rootProject.ext.dependencies["canary-release"]
+    testImplementation rootProject.ext.dependencies["canary-release"]
 }
