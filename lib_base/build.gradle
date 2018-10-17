@@ -110,6 +110,7 @@ dependencies {
 
     //tools
     api rootProject.ext.dependencies["dagger2"]
+    kapt rootProject.ext.dependencies["dagger2-compiler"]
     api rootProject.ext.dependencies["gson"]
     compileOnly rootProject.ext.dependencies["javax.annotation"]
 
