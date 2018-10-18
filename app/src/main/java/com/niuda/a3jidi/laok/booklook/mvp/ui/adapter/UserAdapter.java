@@ -17,6 +17,7 @@ package com.niuda.a3jidi.laok.booklook.mvp.ui.adapter;
 
 import android.view.View;
 
+import com.niuda.a3jidi.laok.R;
 import com.niuda.a3jidi.laok.booklook.mvp.model.entity.User;
 import com.niuda.a3jidi.laok.booklook.mvp.ui.holder.UserItemHolder;
 import com.niuda.a3jidi.lib_base.base.base.BaseHolder;

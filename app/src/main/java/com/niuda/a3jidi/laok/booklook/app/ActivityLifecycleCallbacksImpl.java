@@ -23,6 +23,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+import com.niuda.a3jidi.laok.R;
+
 import timber.log.Timber;
 
 /**

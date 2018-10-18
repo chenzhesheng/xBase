@@ -15,9 +15,10 @@
  */
 package com.niuda.a3jidi.laok.booklook.mvp.model.entity;
 
+import com.niuda.a3jidi.laok.booklook.mvp.contract.API;
+
 import java.io.Serializable;
 
-import me.jessyan.mvparms.demo.mvp.model.api.Api;
 
 /**
  * ================================================
@@ -52,7 +53,7 @@ public class BaseResponse<T> implements Serializable {
      * @return
      */
     public boolean isSuccess() {
-        if (code.equals(Api.RequestSuccess)) {
+        if (code.equals(API.Companion.getRequestSuccess())) {
             return true;
         } else {
             return false;

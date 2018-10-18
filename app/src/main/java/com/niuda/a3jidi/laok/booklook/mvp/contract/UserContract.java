@@ -16,7 +16,6 @@
 package com.niuda.a3jidi.laok.booklook.mvp.contract;
 
 import android.app.Activity;
-import android.database.Observable;
 
 import com.niuda.a3jidi.laok.booklook.mvp.model.entity.User;
 import com.niuda.a3jidi.lib_base.base.mvp.IModel;
@@ -25,7 +24,7 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.List;
 
-
+import io.reactivex.Observable;
 /**
  * ================================================
  * 展示 Contract 的用法

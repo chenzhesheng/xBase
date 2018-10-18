@@ -20,6 +20,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.niuda.a3jidi.laok.R;
+import com.niuda.a3jidi.laok.booklook.app.utils.ImageConfigImpl;
 import com.niuda.a3jidi.laok.booklook.mvp.model.entity.User;
 import com.niuda.a3jidi.lib_base.base.base.BaseHolder;
 import com.niuda.a3jidi.lib_base.base.di.component.AppComponent;
@@ -46,6 +48,8 @@ public class UserItemHolder extends BaseHolder<User> {
 
     public UserItemHolder(View itemView) {
         super(itemView);
+        mAvatar = itemView.findViewById(R.id.iv_avatar);
+        mName = itemView.findViewById(R.id.tv_name);
         //可以在任何可以拿到 Context 的地方,拿到 AppComponent,从而得到用 Dagger 管理的单例对象
         mAppComponent = ArmsUtils.obtainAppComponentFromContext(itemView.getContext());
         mImageLoader = mAppComponent.imageLoader();

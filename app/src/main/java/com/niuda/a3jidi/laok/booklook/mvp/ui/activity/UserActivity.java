@@ -23,6 +23,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 
+import com.niuda.a3jidi.laok.R;
+import com.niuda.a3jidi.laok.booklook.di.component.DaggerUserComponent;
 import com.niuda.a3jidi.laok.booklook.di.module.UserModule;
 import com.niuda.a3jidi.laok.booklook.mvp.contract.UserContract;
 import com.niuda.a3jidi.laok.booklook.mvp.presenter.UserPresenter;
@@ -30,11 +32,14 @@ import com.niuda.a3jidi.lib_base.base.base.BaseActivity;
 import com.niuda.a3jidi.lib_base.base.base.DefaultAdapter;
 import com.niuda.a3jidi.lib_base.base.di.component.AppComponent;
 import com.niuda.a3jidi.lib_base.base.utils.ArmsUtils;
+import com.paginate.Paginate;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import javax.inject.Inject;
 
 import timber.log.Timber;
+
+import static com.niuda.a3jidi.lib_base.base.utils.Preconditions.checkNotNull;
 
 
 /**
@@ -49,9 +54,7 @@ import timber.log.Timber;
  */
 public class UserActivity extends BaseActivity<UserPresenter> implements UserContract.View, SwipeRefreshLayout.OnRefreshListener {
 
-//    @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
-//    @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
     @Inject
     RxPermissions mRxPermissions;
@@ -80,6 +83,8 @@ public class UserActivity extends BaseActivity<UserPresenter> implements UserCon
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        mSwipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
+        mRecyclerView = findViewById(R.id.recyclerView);
         initRecyclerView();
         mRecyclerView.setAdapter(mAdapter);
         initPaginate();

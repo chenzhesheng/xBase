@@ -1,10 +1,11 @@
 package com.niuda.a3jidi.laok.booklook.mvp.contract
 
-import retrofit2.http.GET
-
 interface API {
+    companion object {
+        val APP_DOMAIN = "https://api.github.com"
+        val RequestSuccess = "0"
+    }
 
-    @GET("/v2/book/1220562")
-    fun getBook(): Observable<HttpJsonResult>
-
+    //    @GET("/v2/book/1220562")
+    //    fun getBook(): Observable<HttpJsonResult>
 }

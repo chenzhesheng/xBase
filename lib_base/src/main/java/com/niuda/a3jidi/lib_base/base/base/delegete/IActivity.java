@@ -54,16 +54,6 @@ public interface IActivity {
      */
     void setupActivityComponent(@NonNull AppComponent appComponent);
 
-    /**
-     * 是否使用 EventBus
-     * Arms 核心库现在并不会依赖某个 EventBus, 要想使用 EventBus, 还请在项目中自行依赖对应的 EventBus
-     * 现在支持两种 EventBus, greenrobot 的 EventBus 和畅销书 《Android源码设计模式解析与实战》的作者 何红辉 所作的 AndroidEventBus
-     * 确保依赖后, 将此方法返回 true, Arms 会自动检测您依赖的 EventBus, 并自动注册
-     * 这种做法可以让使用者有自行选择三方库的权利, 并且还可以减轻 Arms 的体积
-     *
-     * @return 返回 {@code true}, Arms 会自动注册 EventBus
-     */
-    boolean useEventBus();
 
     /**
      * 初始化 View, 如果 {@link #initView(Bundle)} 返回 0, 框架则不会调用 {@link Activity#setContentView(int)}

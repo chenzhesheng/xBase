@@ -17,6 +17,7 @@ package com.niuda.a3jidi.laok.booklook.di.component;
 
 
 import com.niuda.a3jidi.laok.booklook.di.module.UserModule;
+import com.niuda.a3jidi.laok.booklook.mvp.ui.activity.UserActivity;
 import com.niuda.a3jidi.lib_base.base.di.component.AppComponent;
 import com.niuda.a3jidi.lib_base.base.di.scope.ActivityScope;
 

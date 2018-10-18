@@ -19,6 +19,9 @@ import android.app.Application;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
+import com.niuda.a3jidi.laok.BuildConfig;
+import com.niuda.a3jidi.laok.booklook.app.utils.GlideImageLoaderStrategy;
+import com.niuda.a3jidi.laok.booklook.mvp.contract.API;
 import com.niuda.a3jidi.lib_base.base.base.delegete.AppLifecycles;
 import com.niuda.a3jidi.lib_base.base.di.module.GlobalConfigModule;
 import com.niuda.a3jidi.lib_base.base.http.log.RequestInterceptor;
@@ -27,8 +30,6 @@ import com.niuda.a3jidi.lib_base.base.integration.ConfigModule;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import me.jessyan.mvparms.demo.BuildConfig;
-import me.jessyan.mvparms.demo.mvp.model.api.Api;
 import me.jessyan.progressmanager.ProgressManager;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
 
@@ -38,8 +39,8 @@ import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
  * ConfigModule 的实现类可以有无数多个, 在 Application 中只是注册回调, 并不会影响性能 (多个 ConfigModule 在多 Module 环境下尤为受用)
  * 不过要注意 ConfigModule 接口的实现类对象是通过反射生成的, 这里会有些性能损耗
  *
- * @see com.jess.arms.base.delegate.AppDelegate
- * @see com.jess.arms.integration.ManifestParser
+// * @see com.jess.arms.base.delegate.AppDelegate
+// * @see com.jess.arms.integration.ManifestParser
  * @see <a href="https://github.com/JessYanCoding/MVPArms/wiki">请配合官方 Wiki 文档学习本框架</a>
  * @see <a href="https://github.com/JessYanCoding/MVPArms/wiki/UpdateLog">更新日志, 升级必看!</a>
  * @see <a href="https://github.com/JessYanCoding/MVPArms/wiki/Issues">常见 Issues, 踩坑必看!</a>
@@ -58,7 +59,7 @@ public final class GlobalConfiguration implements ConfigModule {
             builder.printHttpLogLevel(RequestInterceptor.Level.NONE);
         }
 
-        builder.baseurl(Api.APP_DOMAIN)
+        builder.baseurl(API.Companion.getAPP_DOMAIN())
                 //强烈建议自己自定义图片加载逻辑, 因为 arms-imageloader-glide 提供的 GlideImageLoaderStrategy 并不能满足复杂的需求
                 //请参考 https://github.com/JessYanCoding/MVPArms/wiki#3.4
                 .imageLoaderStrategy(new GlideImageLoaderStrategy())
