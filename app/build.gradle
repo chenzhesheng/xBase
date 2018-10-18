@@ -14,7 +14,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.niuda.a3jidi.laok"
+        applicationId "com.chenzhesheng.xBase.demo"
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
@@ -62,7 +62,7 @@ dependencies {
     }
 
     //arms
-    implementation project(':lib_base')
+    implementation project(':xBase')
 
     //test
     testImplementation rootProject.ext.dependencies["junit"]
