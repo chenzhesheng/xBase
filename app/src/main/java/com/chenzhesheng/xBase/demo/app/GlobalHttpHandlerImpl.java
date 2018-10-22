@@ -18,11 +18,11 @@ package com.chenzhesheng.xBase.demo.app;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.chenzhesheng.xBase.utils.XBaseUtils;
 import com.google.gson.reflect.TypeToken;
 import com.chenzhesheng.xBase.demo.mvp.model.entity.User;
 import com.chenzhesheng.xBase.http.GlobalHttpHandler;
 import com.chenzhesheng.xBase.http.log.RequestInterceptor;
-import com.chenzhesheng.xBase.utils.ArmsUtils;
 
 import java.util.List;
 
@@ -58,9 +58,9 @@ public class GlobalHttpHandlerImpl implements GlobalHttpHandler {
      */
     @Override
     public Response onHttpResultResponse(String httpResult, Interceptor.Chain chain, Response response) {
-        if (!TextUtils.isEmpty(httpResult) && RequestInterceptor.isJson(response.body().contentType())) {
+        if (!TextUtils.isEmpty(httpResult) && RequestInterceptor.Companion.isJson(response.body().contentType())) {
             try {
-                List<User> list = ArmsUtils.obtainAppComponentFromContext(context).gson().fromJson(httpResult, new TypeToken<List<User>>() {
+                List<User> list = XBaseUtils.Companion.obtainAppComponentFromContext(context).gson().fromJson(httpResult, new TypeToken<List<User>>() {
                 }.getType());
                 User user = list.get(0);
                 Timber.w("Result ------> " + user.getLogin() + "    ||   Avatar_url------> " + user.getAvatarUrl());

@@ -29,7 +29,7 @@ import com.chenzhesheng.xBase.integration.cache.Cache;
 import com.chenzhesheng.xBase.integration.cache.CacheType;
 import com.chenzhesheng.xBase.integration.lifecycle.FragmentLifecycleable;
 import com.chenzhesheng.xBase.mvp.IPresenter;
-import com.chenzhesheng.xBase.utils.ArmsUtils;
+import com.chenzhesheng.xBase.utils.XBaseUtils;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import javax.inject.Inject;
@@ -64,7 +64,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
     @Override
     public synchronized Cache<String, Object> provideCache() {
         if (mCache == null) {
-            mCache = ArmsUtils.obtainAppComponentFromContext(getActivity()).cacheFactory().build(CacheType.FRAGMENT_CACHE);
+            mCache = XBaseUtils.Companion.obtainAppComponentFromContext(getActivity()).cacheFactory().build(CacheType.FRAGMENT_CACHE);
         }
         return mCache;
     }

@@ -20,7 +20,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.chenzhesheng.xBase.utils.ArmsUtils;
+import com.chenzhesheng.xBase.utils.XBaseUtils;
 
 
 /**
@@ -45,7 +45,7 @@ public class ActivityDelegateImpl implements ActivityDelegate {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         //这里提供 AppComponent 对象给 BaseActivity 的子类, 用于 Dagger2 的依赖注入
-        iActivity.setupActivityComponent(ArmsUtils.obtainAppComponentFromContext(mActivity));
+        iActivity.setupActivityComponent(XBaseUtils.Companion.obtainAppComponentFromContext(mActivity));
     }
 
     @Override

@@ -19,15 +19,17 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
-import com.google.gson.Gson;
 import com.chenzhesheng.xBase.base.delegete.AppDelegate;
 import com.chenzhesheng.xBase.di.module.AppModule;
 import com.chenzhesheng.xBase.di.module.ClientModule;
 import com.chenzhesheng.xBase.di.module.GlobalConfigModule;
+import com.chenzhesheng.xBase.http.imageloader.BaseImageLoaderStrategy;
 import com.chenzhesheng.xBase.http.imageloader.ImageLoader;
 import com.chenzhesheng.xBase.integration.AppManager;
+import com.chenzhesheng.xBase.integration.ConfigModule;
 import com.chenzhesheng.xBase.integration.IRepositoryManager;
 import com.chenzhesheng.xBase.integration.cache.Cache;
+import com.google.gson.Gson;
 
 import java.io.File;
 
@@ -40,7 +42,7 @@ import okhttp3.OkHttpClient;
 
 /**
  * ================================================
- * 可通过 {@link ArmsUtils#obtainAppComponentFromContext(Context)} 拿到此接口的实现类
+ * 可通过 {@link com.chenzhesheng.xBase.utils.XBaseUtils#Companion#obtainAppComponentFromContext(Context)} 拿到此接口的实现类
  * 拥有此接口的实现类即可调用对应的方法拿到 Dagger 提供的对应实例
  *
  * @see <a href="https://github.com/JessYanCoding/MVPArms/wiki#2.2">AppComponent wiki 官方文档</a>

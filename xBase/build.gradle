@@ -48,6 +48,9 @@ projects {
 }
 
 dependencies {
+    api rootProject.ext.dependencies["kotlin-reflect"]
+    api rootProject.ext.dependencies["kotlin-stdlib-jdk7"]
+
     //support
     api(rootProject.ext.dependencies["support-v4"]) {
         exclude module: 'support-annotations'
@@ -117,6 +120,7 @@ dependencies {
     kapt rootProject.ext.dependencies["dagger2-compiler"]
     api rootProject.ext.dependencies["gson"]
     compileOnly rootProject.ext.dependencies["javax.annotation"]
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
 
     //test
     testImplementation rootProject.ext.dependencies["junit"]

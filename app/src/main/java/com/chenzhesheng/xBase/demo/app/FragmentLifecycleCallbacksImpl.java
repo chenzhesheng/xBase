@@ -22,7 +22,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 
 import com.chenzhesheng.xBase.integration.cache.IntelligentCache;
-import com.chenzhesheng.xBase.utils.ArmsUtils;
+import com.chenzhesheng.xBase.utils.XBaseUtils;
 import com.squareup.leakcanary.RefWatcher;
 
 import timber.log.Timber;
@@ -96,7 +96,7 @@ public class FragmentLifecycleCallbacksImpl extends FragmentManager.FragmentLife
     @Override
     public void onFragmentDestroyed(FragmentManager fm, Fragment f) {
         Timber.i(f.toString() + " - onFragmentDestroyed");
-        ((RefWatcher) ArmsUtils
+        ((RefWatcher) XBaseUtils.Companion
                 .obtainAppComponentFromContext(f.getActivity())
                 .extras()
                 .get(IntelligentCache.getKeyOfKeep(RefWatcher.class.getName())))

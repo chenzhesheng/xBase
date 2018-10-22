@@ -1,5 +1,7 @@
 ext {
-
+    kotlin = [
+            kotlin_version          : "1.2.71"
+    ]
     android = [
             compileSdkVersion       : 28,
             buildToolsVersion       : "28.0.3",
@@ -22,6 +24,10 @@ ext {
     ]
 
     dependencies = [
+            // kotlin
+            "kotlin-reflect"           : "org.jetbrains.kotlin:kotlin-reflect:${kotlin["kotlin_version"]}",
+            "kotlin-stdlib-jdk7"       : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin["kotlin_version"]}",
+
             //support
             "appcompat-v7"             : "com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
             "design"                   : "com.android.support:design:${version["androidSupportSdkVersion"]}",

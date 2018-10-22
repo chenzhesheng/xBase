@@ -20,13 +20,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.chenzhesheng.xBase.base.BaseHolder;
+import com.chenzhesheng.xBase.base.DefaultAdapter;
 import com.chenzhesheng.xBase.demo.R;
 import com.chenzhesheng.xBase.demo.app.utils.ImageConfigImpl;
 import com.chenzhesheng.xBase.demo.mvp.model.entity.User;
-import com.chenzhesheng.xBase.base.BaseHolder;
 import com.chenzhesheng.xBase.di.component.AppComponent;
 import com.chenzhesheng.xBase.http.imageloader.ImageLoader;
-import com.chenzhesheng.xBase.utils.ArmsUtils;
+import com.chenzhesheng.xBase.utils.XBaseUtils;
 
 import io.reactivex.Observable;
 
@@ -51,7 +52,7 @@ public class UserItemHolder extends BaseHolder<User> {
         mAvatar = itemView.findViewById(R.id.iv_avatar);
         mName = itemView.findViewById(R.id.tv_name);
         //可以在任何可以拿到 Context 的地方,拿到 AppComponent,从而得到用 Dagger 管理的单例对象
-        mAppComponent = ArmsUtils.obtainAppComponentFromContext(itemView.getContext());
+        mAppComponent = XBaseUtils.Companion.obtainAppComponentFromContext(itemView.getContext());
         mImageLoader = mAppComponent.imageLoader();
     }
 

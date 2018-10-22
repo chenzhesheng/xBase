@@ -49,10 +49,10 @@ public class ImageConfigImpl extends ImageConfig {
     private boolean isClearDiskCache;//清理本地缓存
 
     private ImageConfigImpl(Builder builder) {
-        this.url = builder.url;
-        this.imageView = builder.imageView;
-        this.placeholder = builder.placeholder;
-        this.errorPic = builder.errorPic;
+        this.setUrl(builder.url);
+        this.setImageView(builder.imageView);
+        this.setPlaceholder(builder.placeholder);
+        this.setErrorPic(builder.errorPic);
         this.fallback = builder.fallback;
         this.cacheStrategy = builder.cacheStrategy;
         this.imageRadius = builder.imageRadius;

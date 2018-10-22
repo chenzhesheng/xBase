@@ -20,6 +20,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
 
+import com.chenzhesheng.xBase.di.component.AppComponent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.chenzhesheng.xBase.integration.ActivityLifecycle;

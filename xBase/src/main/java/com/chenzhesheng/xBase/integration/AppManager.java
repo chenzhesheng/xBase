@@ -26,7 +26,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 
-import com.chenzhesheng.xBase.utils.ArmsUtils;
+
+import com.chenzhesheng.xBase.utils.XBaseUtils;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -163,7 +164,7 @@ public final class AppManager {
                     View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
                     Snackbar.make(view, message, isLong ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT).show();
                 } else {
-                    ArmsUtils.makeText(mApplication, message);
+                    XBaseUtils.Companion.makeText(mApplication, message);
                 }
             }
         }).subscribeOn(AndroidSchedulers.mainThread()).subscribe();

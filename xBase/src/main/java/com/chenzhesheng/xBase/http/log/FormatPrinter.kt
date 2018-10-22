@@ -13,45 +13,40 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.chenzhesheng.xBase.http.log;
+package com.chenzhesheng.xBase.http.log
 
 
-import java.util.List;
-
-import okhttp3.MediaType;
-import okhttp3.Request;
+import okhttp3.MediaType
+import okhttp3.Request
 
 /**
  * ================================================
  * 对 OkHttp 的请求和响应信息进行更规范和清晰的打印, 开发者可更根据自己的需求自行扩展打印格式
  *
  * @see DefaultFormatPrinter
- * @see GlobalConfigModule.Builder#formatPrinter(FormatPrinter)
- * Created by JessYan on 31/01/2018 17:36
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
- * ================================================
+ *
+ * @see GlobalConfigModule.Builder.formatPrinter
  */
 
-public interface FormatPrinter {
+interface FormatPrinter {
 
     /**
-     * 打印网络请求信息, 当网络请求时 {{@link okhttp3.RequestBody}} 可以解析的情况
+     * 打印网络请求信息, 当网络请求时 {[okhttp3.RequestBody]} 可以解析的情况
      *
      * @param request
      * @param bodyString 发送给服务器的请求体中的数据(已解析)
      */
-    void printJsonRequest(Request request, String bodyString);
+    fun printJsonRequest(request: Request, bodyString: String)
 
     /**
-     * 打印网络请求信息, 当网络请求时 {{@link okhttp3.RequestBody}} 为 {@code null} 或不可解析的情况
+     * 打印网络请求信息, 当网络请求时 {[okhttp3.RequestBody]} 为 `null` 或不可解析的情况
      *
      * @param request
      */
-    void printFileRequest(Request request);
+    fun printFileRequest(request: Request)
 
     /**
-     * 打印网络响应信息, 当网络响应时 {{@link okhttp3.ResponseBody}} 可以解析的情况
+     * 打印网络响应信息, 当网络响应时 {[okhttp3.ResponseBody]} 可以解析的情况
      *
      * @param chainMs 服务器响应耗时(单位毫秒)
      * @param isSuccessful 请求是否成功
@@ -63,11 +58,11 @@ public interface FormatPrinter {
      * @param message 响应信息
      * @param responseUrl 请求地址
      */
-    void printJsonResponse(long chainMs, boolean isSuccessful, int code, String headers, MediaType contentType,
-                           String bodyString, List<String> segments, String message, String responseUrl);
+    fun printJsonResponse(chainMs: Long, isSuccessful: Boolean, code: Int, headers: String, contentType: MediaType,
+                          bodyString: String, segments: List<String>, message: String, responseUrl: String)
 
     /**
-     * 打印网络响应信息, 当网络响应时 {{@link okhttp3.ResponseBody}} 为 {@code null} 或不可解析的情况
+     * 打印网络响应信息, 当网络响应时 {[okhttp3.ResponseBody]} 为 `null` 或不可解析的情况
      *
      * @param chainMs 服务器响应耗时(单位毫秒)
      * @param isSuccessful 请求是否成功
@@ -77,6 +72,6 @@ public interface FormatPrinter {
      * @param message 响应信息
      * @param responseUrl 请求地址
      */
-    void printFileResponse(long chainMs, boolean isSuccessful, int code, String headers,
-                           List<String> segments, String message, String responseUrl);
+    fun printFileResponse(chainMs: Long, isSuccessful: Boolean, code: Int, headers: String,
+                          segments: List<String>, message: String, responseUrl: String)
 }

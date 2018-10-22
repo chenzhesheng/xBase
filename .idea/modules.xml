@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AppBaseFramework.iml" filepath="$PROJECT_DIR$/AppBaseFramework.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xBase/xBase.iml" filepath="$PROJECT_DIR$/xBase/xBase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xBase.iml" filepath="$PROJECT_DIR$/xBase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xBase/xBase-xBase.iml" filepath="$PROJECT_DIR$/xBase/xBase-xBase.iml" />
     </modules>
   </component>
 </project>

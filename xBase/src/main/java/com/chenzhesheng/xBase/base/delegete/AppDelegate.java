@@ -26,6 +26,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 
 import com.chenzhesheng.xBase.base.App;
+import com.chenzhesheng.xBase.base.BaseApplication;
 import com.chenzhesheng.xBase.di.component.AppComponent;
 import com.chenzhesheng.xBase.di.component.DaggerAppComponent;
 import com.chenzhesheng.xBase.di.module.GlobalConfigModule;
@@ -192,7 +193,7 @@ public class AppDelegate implements App, AppLifecycles {
      * 将 {@link AppComponent} 返回出去, 供其它地方使用, {@link AppComponent} 接口中声明的方法返回的实例, 在 {@link #getAppComponent()} 拿到对象后都可以直接使用
      *
      * @return AppComponent
-     * @see ArmsUtils#obtainAppComponentFromContext(Context) 可直接获取 {@link AppComponent}
+     * @see com.chenzhesheng.xBase.utils.XBaseUtils#Companion#obtainAppComponentFromContext(Context) 可直接获取 {@link AppComponent}
      */
     @NonNull
     @Override

@@ -30,7 +30,7 @@ import com.chenzhesheng.xBase.integration.cache.Cache;
 import com.chenzhesheng.xBase.integration.cache.CacheType;
 import com.chenzhesheng.xBase.integration.lifecycle.ActivityLifecycleable;
 import com.chenzhesheng.xBase.mvp.IPresenter;
-import com.chenzhesheng.xBase.utils.ArmsUtils;
+import com.chenzhesheng.xBase.utils.XBaseUtils;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 
 import javax.inject.Inject;
@@ -67,7 +67,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Override
     public synchronized Cache<String, Object> provideCache() {
         if (mCache == null) {
-            mCache = ArmsUtils.obtainAppComponentFromContext(this).cacheFactory().build(CacheType.ACTIVITY_CACHE);
+            mCache = XBaseUtils.Companion.obtainAppComponentFromContext(this).cacheFactory().build(CacheType.ACTIVITY_CACHE);
         }
         return mCache;
     }

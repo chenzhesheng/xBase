@@ -13,28 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.chenzhesheng.xBase.http.imageloader;
+package com.chenzhesheng.xBase.http.imageloader
 
-import android.content.Context;
+import android.content.Context
 
 /**
  * ================================================
- * 图片加载策略,实现 {@link BaseImageLoaderStrategy}
- * 并通过 {@link ImageLoader#setLoadImgStrategy(BaseImageLoaderStrategy)} 配置后,才可进行图片请求
- * <p>
+ * 图片加载策略,实现 [BaseImageLoaderStrategy]
+ * 并通过 [ImageLoader.setLoadImgStrategy] 配置后,才可进行图片请求
+ *
+ *
  * Created by JessYan on 8/5/2016 15:50
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
+ * [Contact me](mailto:jess.yan.effort@gmail.com)
+ * [Follow me](https://github.com/JessYanCoding)
  * ================================================
  */
-public interface BaseImageLoaderStrategy<T extends ImageConfig> {
+interface BaseImageLoaderStrategy<T : ImageConfig> {
     /**
      * 加载图片
      *
      * @param ctx
      * @param config
      */
-    void loadImage(Context ctx, T config);
+    fun loadImage(ctx: Context, config: T)
 
     /**
      * 停止加载
@@ -42,5 +43,5 @@ public interface BaseImageLoaderStrategy<T extends ImageConfig> {
      * @param ctx
      * @param config
      */
-    void clear(Context ctx, T config);
+    fun clear(ctx: Context, config: T)
 }

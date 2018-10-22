@@ -13,40 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.chenzhesheng.xBase.http.imageloader;
+package com.chenzhesheng.xBase.http.imageloader
 
-import android.widget.ImageView;
+import android.widget.ImageView
 
 /**
  * ================================================
  * 这里是图片加载配置信息的基类,定义一些所有图片加载框架都可以用的通用参数
- * 每个 {@link BaseImageLoaderStrategy} 应该对应一个 {@link ImageConfig} 实现类
- * <p>
+ * 每个 [BaseImageLoaderStrategy] 应该对应一个 [ImageConfig] 实现类
+ *
+ *
  * Created by JessYan on 8/5/16 15:19
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
+ * [Contact me](mailto:jess.yan.effort@gmail.com)
+ * [Follow me](https://github.com/JessYanCoding)
  * ================================================
  */
-public class ImageConfig {
-    protected String url;
-    protected ImageView imageView;
-    protected int placeholder;//占位符
-    protected int errorPic;//错误占位符
-
-
-    public String getUrl() {
-        return url;
-    }
-
-    public ImageView getImageView() {
-        return imageView;
-    }
-
-    public int getPlaceholder() {
-        return placeholder;
-    }
-
-    public int getErrorPic() {
-        return errorPic;
-    }
+open class ImageConfig {
+    var url: String? = null
+    var imageView: ImageView? = null
+    var placeholder: Int = 0    //占位符
+    var errorPic: Int = 0   //错误占位符
 }

@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <!-- arms配置 -->
+        <!-- xBase配置 -->
         <meta-data
             android:name="com.chenzhesheng.xBase.demo.app.GlobalConfiguration"
             android:value="ConfigModule"/>

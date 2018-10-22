@@ -61,7 +61,7 @@ dependencies {
         exclude module: 'support-fragment'
     }
 
-    //arms
+    //xBase
     implementation project(':xBase')
 
     //test
@@ -69,7 +69,6 @@ dependencies {
     debugImplementation rootProject.ext.dependencies["canary-debug"]
     releaseImplementation rootProject.ext.dependencies["canary-release"]
     testImplementation rootProject.ext.dependencies["canary-release"]
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
     mavenCentral()

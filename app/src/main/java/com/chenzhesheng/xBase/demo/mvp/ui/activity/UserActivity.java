@@ -31,7 +31,7 @@ import com.chenzhesheng.xBase.demo.mvp.presenter.UserPresenter;
 import com.chenzhesheng.xBase.base.BaseActivity;
 import com.chenzhesheng.xBase.base.DefaultAdapter;
 import com.chenzhesheng.xBase.di.component.AppComponent;
-import com.chenzhesheng.xBase.utils.ArmsUtils;
+import com.chenzhesheng.xBase.utils.XBaseUtils;
 import com.paginate.Paginate;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -101,7 +101,7 @@ public class UserActivity extends BaseActivity<UserPresenter> implements UserCon
      */
     private void initRecyclerView() {
         mSwipeRefreshLayout.setOnRefreshListener(this);
-        ArmsUtils.configRecyclerView(mRecyclerView, mLayoutManager);
+        XBaseUtils.Companion.configRecyclerView(mRecyclerView, mLayoutManager);
     }
 
 
@@ -120,13 +120,13 @@ public class UserActivity extends BaseActivity<UserPresenter> implements UserCon
     @Override
     public void showMessage(@NonNull String message) {
         checkNotNull(message);
-        ArmsUtils.snackbarText(message);
+        XBaseUtils.Companion.snackbarText(message);
     }
 
     @Override
     public void launchActivity(@NonNull Intent intent) {
         checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
+        XBaseUtils.Companion.startActivity(intent);
     }
 
     @Override
