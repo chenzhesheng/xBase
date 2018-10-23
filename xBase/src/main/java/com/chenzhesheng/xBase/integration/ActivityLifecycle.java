@@ -22,8 +22,10 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
+import com.chenzhesheng.xBase.base.BaseFragment;
 import com.chenzhesheng.xBase.base.delegete.ActivityDelegate;
 import com.chenzhesheng.xBase.base.delegete.ActivityDelegateImpl;
+import com.chenzhesheng.xBase.base.delegete.FragmentDelegate;
 import com.chenzhesheng.xBase.base.delegete.IActivity;
 import com.chenzhesheng.xBase.integration.cache.Cache;
 import com.chenzhesheng.xBase.integration.cache.IntelligentCache;
@@ -84,7 +86,7 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
                 activityDelegate = new ActivityDelegateImpl(activity);
                 //使用 IntelligentCache.KEY_KEEP 作为 key 的前缀, 可以使储存的数据永久存储在内存中
                 //否则存储在 LRU 算法的存储空间中, 前提是 Activity 使用的是 IntelligentCache (框架默认使用)
-                cache.put(IntelligentCache.getKeyOfKeep(ActivityDelegate.ACTIVITY_DELEGATE), activityDelegate);
+                cache.put(IntelligentCache.getKeyOfKeep(ActivityDelegate.Companion.getACTIVITY_DELEGATE()), activityDelegate);
             }
             activityDelegate.onCreate(savedInstanceState);
         }
@@ -184,7 +186,7 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
         ActivityDelegate activityDelegate = null;
         if (activity instanceof IActivity) {
             Cache<String, Object> cache = getCacheFromActivity((IActivity) activity);
-            activityDelegate = (ActivityDelegate) cache.get(IntelligentCache.getKeyOfKeep(ActivityDelegate.ACTIVITY_DELEGATE));
+            activityDelegate = (ActivityDelegate) cache.get(IntelligentCache.getKeyOfKeep(ActivityDelegate.Companion.getACTIVITY_DELEGATE()));
         }
         return activityDelegate;
     }
@@ -192,7 +194,7 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
     @NonNull
     private Cache<String, Object> getCacheFromActivity(IActivity activity) {
         Cache<String, Object> cache = activity.provideCache();
-        Preconditions.checkNotNull(cache, "%s cannot be null on Activity", Cache.class.getName());
+        Preconditions.Companion.checkNotNull(cache, "%s cannot be null on Activity", Cache.class.getName());
         return cache;
     }
 

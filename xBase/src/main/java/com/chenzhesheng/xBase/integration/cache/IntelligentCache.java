@@ -159,7 +159,7 @@ public class IntelligentCache<V> implements Cache<String, V> {
      */
     @NonNull
     public static String getKeyOfKeep(@NonNull String key) {
-        Preconditions.checkNotNull(key, "key == null");
+        Preconditions.Companion.checkNotNull(key, "key == null");
         return IntelligentCache.KEY_KEEP + key;
     }
 }

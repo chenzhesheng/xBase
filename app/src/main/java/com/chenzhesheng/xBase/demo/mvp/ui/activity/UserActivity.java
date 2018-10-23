@@ -31,6 +31,7 @@ import com.chenzhesheng.xBase.demo.mvp.presenter.UserPresenter;
 import com.chenzhesheng.xBase.base.BaseActivity;
 import com.chenzhesheng.xBase.base.DefaultAdapter;
 import com.chenzhesheng.xBase.di.component.AppComponent;
+import com.chenzhesheng.xBase.utils.Preconditions;
 import com.chenzhesheng.xBase.utils.XBaseUtils;
 import com.paginate.Paginate;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -39,7 +40,6 @@ import javax.inject.Inject;
 
 import timber.log.Timber;
 
-import static com.chenzhesheng.xBase.utils.Preconditions.checkNotNull;
 
 
 /**
@@ -107,25 +107,25 @@ public class UserActivity extends BaseActivity<UserPresenter> implements UserCon
 
     @Override
     public void showLoading() {
-        Timber.tag(TAG).w("showLoading");
+        Timber.tag(getTAG()).w("showLoading");
         mSwipeRefreshLayout.setRefreshing(true);
     }
 
     @Override
     public void hideLoading() {
-        Timber.tag(TAG).w("hideLoading");
+        Timber.tag(getTAG()).w("hideLoading");
         mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
     public void showMessage(@NonNull String message) {
-        checkNotNull(message);
+        Preconditions.Companion.checkNotNull(message);
         XBaseUtils.Companion.snackbarText(message);
     }
 
     @Override
     public void launchActivity(@NonNull Intent intent) {
-        checkNotNull(intent);
+        Preconditions.Companion.checkNotNull(intent);
         XBaseUtils.Companion.startActivity(intent);
     }
 
@@ -191,7 +191,7 @@ public class UserActivity extends BaseActivity<UserPresenter> implements UserCon
 
     @Override
     protected void onDestroy() {
-        DefaultAdapter.releaseAllHolder(mRecyclerView);//super.onDestroy()之后会unbind,所有view被置为null,所以必须在之前调用
+        DefaultAdapter.Companion.releaseAllHolder(mRecyclerView);//super.onDestroy()之后会unbind,所有view被置为null,所以必须在之前调用
         super.onDestroy();
         this.mRxPermissions = null;
         this.mPaginate = null;

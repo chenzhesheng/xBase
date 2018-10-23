@@ -453,7 +453,7 @@ class XBaseUtils private constructor() {
         fun obtainAppComponentFromContext(context: Context): AppComponent {
             Preconditions.checkNotNull(context, "%s cannot be null", Context::class.java.name)
             Preconditions.checkState(context.applicationContext is App, "%s must be implements %s", context.applicationContext.javaClass.name, App::class.java.name)
-            return (context.applicationContext as App).appComponent
+            return (context.applicationContext as App).getAppComponent()
         }
     }
 

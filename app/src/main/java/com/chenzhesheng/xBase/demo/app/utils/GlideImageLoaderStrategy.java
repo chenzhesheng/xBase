@@ -24,7 +24,9 @@ import com.bumptech.glide.GlideBuilder;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.chenzhesheng.xBase.di.module.GlobalConfigModule;
 import com.chenzhesheng.xBase.http.imageloader.BaseImageLoaderStrategy;
+import com.chenzhesheng.xBase.http.imageloader.ImageConfig;
 import com.chenzhesheng.xBase.http.imageloader.glide.GlideAppliesOptions;
 import com.chenzhesheng.xBase.http.imageloader.glide.GlideArms;
 import com.chenzhesheng.xBase.http.imageloader.glide.GlideRequest;
@@ -52,9 +54,9 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
 
     @Override
     public void loadImage(Context ctx, ImageConfigImpl config) {
-        Preconditions.checkNotNull(ctx, "Context is required");
-        Preconditions.checkNotNull(config, "ImageConfigImpl is required");
-        Preconditions.checkNotNull(config.getImageView(), "ImageView is required");
+        Preconditions.Companion.checkNotNull(ctx, "Context is required");
+        Preconditions.Companion.checkNotNull(config, "ImageConfigImpl is required");
+        Preconditions.Companion.checkNotNull(config.getImageView(), "ImageView is required");
 
         GlideRequests requests;
 
@@ -123,8 +125,8 @@ public class GlideImageLoaderStrategy implements BaseImageLoaderStrategy<ImageCo
 
     @Override
     public void clear(final Context ctx, ImageConfigImpl config) {
-        Preconditions.checkNotNull(ctx, "Context is required");
-        Preconditions.checkNotNull(config, "ImageConfigImpl is required");
+        Preconditions.Companion.checkNotNull(ctx, "Context is required");
+        Preconditions.Companion.checkNotNull(config, "ImageConfigImpl is required");
 
         if (config.getImageView() != null) {
             GlideArms.get(ctx).getRequestManagerRetriever().get(ctx).clear(config.getImageView());

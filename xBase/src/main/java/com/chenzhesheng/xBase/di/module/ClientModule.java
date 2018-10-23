@@ -174,7 +174,7 @@ public abstract class ClientModule {
     @Named("RxCacheDirectory")
     static File provideRxCacheDirectory(File cacheDir) {
         File cacheDirectory = new File(cacheDir, "RxCache");
-        return DataHelper.makeDirs(cacheDirectory);
+        return DataHelper.Companion.makeDirs(cacheDirectory);
     }
 
     /**

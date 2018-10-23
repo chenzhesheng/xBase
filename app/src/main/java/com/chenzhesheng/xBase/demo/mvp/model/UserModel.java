@@ -60,13 +60,13 @@ public class UserModel extends BaseModel implements UserContract.Model {
     @Override
     public Observable<List<User>> getUsers(int lastIdQueried, boolean update) {
         //使用rxcache缓存,上拉刷新则不读取缓存,加载更多读取缓存
-        return Observable.just(mRepositoryManager
+        return Observable.just(getMRepositoryManager()
                 .obtainRetrofitService(UserService.class)
                 .getUsers(lastIdQueried, USERS_PER_PAGE))
                 .flatMap(new Function<Observable<List<User>>, ObservableSource<List<User>>>() {
                     @Override
                     public ObservableSource<List<User>> apply(@NonNull Observable<List<User>> listObservable) throws Exception {
-                        return mRepositoryManager.obtainCacheService(CommonCache.class)
+                        return getMRepositoryManager().obtainCacheService(CommonCache.class)
                                 .getUsers(listObservable
                                         , new DynamicKey(lastIdQueried)
                                         , new EvictDynamicKey(update))

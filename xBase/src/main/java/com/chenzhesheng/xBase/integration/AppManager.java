@@ -26,7 +26,8 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 
-
+import com.chenzhesheng.xBase.base.Platform;
+import com.chenzhesheng.xBase.base.delegete.AppLifecycles;
 import com.chenzhesheng.xBase.utils.XBaseUtils;
 
 import java.util.Arrays;
@@ -39,7 +40,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Action;
 import timber.log.Timber;
 
-import static com.chenzhesheng.xBase.base.Platform.DEPENDENCY_SUPPORT_DESIGN;
 
 
 /**
@@ -159,7 +159,7 @@ public final class AppManager {
                 //因为 Snackbar 在 com.android.support:design 库中, 所以如果框架使用者没有自行依赖 com.android.support:design
                 //Arms 则会使用 Toast 替代 Snackbar 显示信息, 如果框架使用者依赖了 arms-autolayout 库就不用依赖 com.android.support:design 了
                 //因为在 arms-autolayout 库中已经依赖有 com.android.support:design
-                if (DEPENDENCY_SUPPORT_DESIGN) {
+                if (Platform.Companion.getDEPENDENCY_SUPPORT_DESIGN()) {
                     Activity activity = getCurrentActivity() == null ? getTopActivity() : getCurrentActivity();
                     View view = activity.getWindow().getDecorView().findViewById(android.R.id.content);
                     Snackbar.make(view, message, isLong ? Snackbar.LENGTH_LONG : Snackbar.LENGTH_SHORT).show();

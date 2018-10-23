@@ -53,7 +53,7 @@ public class BlurTransformation extends BitmapTransformation {
 
     @Override
     protected Bitmap transform(@NonNull BitmapPool pool, @NonNull Bitmap toTransform, int outWidth, int outHeight) {
-        return FastBlur.doBlur(toTransform, mRadius, true);
+        return FastBlur.Companion.doBlur(toTransform, mRadius, true);
     }
 
     @Override

@@ -153,7 +153,7 @@ public class GlobalConfigModule {
     @Singleton
     @Provides
     File provideCacheFile(Application application) {
-        return mCacheFile == null ? DataHelper.getCacheFile(application) : mCacheFile;
+        return mCacheFile == null ? DataHelper.Companion.getCacheFile(application) : mCacheFile;
     }
 
 
@@ -261,7 +261,7 @@ public class GlobalConfigModule {
         }
 
         public Builder baseurl(BaseUrl baseUrl) {
-            this.baseUrl = Preconditions.checkNotNull(baseUrl, BaseUrl.class.getCanonicalName() + "can not be null.");
+            this.baseUrl = Preconditions.Companion.checkNotNull(baseUrl, BaseUrl.class.getCanonicalName() + "can not be null.");
             return this;
         }
 
@@ -315,12 +315,12 @@ public class GlobalConfigModule {
         }
 
         public Builder printHttpLogLevel(RequestInterceptor.Level printHttpLogLevel) {//是否让框架打印 Http 的请求和响应信息
-            this.printHttpLogLevel = Preconditions.checkNotNull(printHttpLogLevel, "The printHttpLogLevel can not be null, use RequestInterceptor.Level.NONE instead.");
+            this.printHttpLogLevel = Preconditions.Companion.checkNotNull(printHttpLogLevel, "The printHttpLogLevel can not be null, use RequestInterceptor.Level.NONE instead.");
             return this;
         }
 
         public Builder formatPrinter(FormatPrinter formatPrinter){
-            this.formatPrinter = Preconditions.checkNotNull(formatPrinter, FormatPrinter.class.getCanonicalName() + "can not be null.");
+            this.formatPrinter = Preconditions.Companion.checkNotNull(formatPrinter, FormatPrinter.class.getCanonicalName() + "can not be null.");
             return this;
         }
 

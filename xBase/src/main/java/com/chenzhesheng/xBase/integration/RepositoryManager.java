@@ -119,7 +119,7 @@ public class RepositoryManager implements IRepositoryManager {
         if (mRetrofitServiceCache == null) {
             mRetrofitServiceCache = mCachefactory.build(CacheType.RETROFIT_SERVICE_CACHE);
         }
-        Preconditions.checkNotNull(mRetrofitServiceCache,
+        Preconditions.Companion.checkNotNull(mRetrofitServiceCache,
                 "Cannot return null from a Cache.Factory#build(int) method");
         T retrofitService = (T) mRetrofitServiceCache.get(serviceClass.getCanonicalName());
         if (retrofitService == null) {
@@ -145,7 +145,7 @@ public class RepositoryManager implements IRepositoryManager {
         if (mCacheServiceCache == null) {
             mCacheServiceCache = mCachefactory.build(CacheType.CACHE_SERVICE_CACHE);
         }
-        Preconditions.checkNotNull(mCacheServiceCache,
+        Preconditions.Companion.checkNotNull(mCacheServiceCache,
                 "Cannot return null from a Cache.Factory#build(int) method");
         T cacheService = (T) mCacheServiceCache.get(cacheClass.getCanonicalName());
         if (cacheService == null) {
